@@ -2,6 +2,7 @@
 
 export default function Home() {
   return (
-      <div>Welcome</div>
+    <div className="flex items-center justify-center">
+      </div>
   );
 }
