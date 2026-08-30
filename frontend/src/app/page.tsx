@@ -1,8 +1,25 @@
+import {
+  Navbar,
+  Hero,
+  Features,
+  HowItWorks,
+  Testimonials,
+  CTA,
+  Footer
+} from "@/features/landing/components";
 
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex items-center justify-center">
+    <>
+      <div className="container-page mx-auto px-2 md:px-4 py-2">
+        <Navbar />
       </div>
+      <Hero />
+      <Features />
+      <HowItWorks />
+      <Testimonials />
+      <CTA />
+      <Footer />
+    </>
   );
 }

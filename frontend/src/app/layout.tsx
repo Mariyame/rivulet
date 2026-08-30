@@ -1,10 +1,17 @@
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, Caveat } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-jakata",
+  display: "swap"
 });
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable:"--font-caveat",
+  display: "swap"
+})
 
 
 export default function DashboardLayout({
@@ -14,9 +21,7 @@ export default function DashboardLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
-        {/* Layout UI */}
-        {/* Place children where you want to render a page or nested layout */}
+      <body className={`${jakarta.variable} ${caveat.variable} antialiased`}>
         <main className="bg-background">{children}</main>
       </body>
     </html>
