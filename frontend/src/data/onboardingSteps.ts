@@ -1,6 +1,6 @@
 import { ClipboardIllustration } from "@/onboarding/ClipboardIllustration";
-import { TrophyIllustration } from "@/onboarding/TrophyIllustration";
-import { CalendarIllustration } from "@/onboarding/CalendarIllustration";
+import { CalendarIllustration } from "@/src/components/onboarding/CalendarIllustration";
+import { TrophyIllustration } from "@/src/components/onboarding/TrophyIllustration";
 
 const onboardingSteps = [
   {
