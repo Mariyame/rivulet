@@ -14,12 +14,13 @@ import {
 export function Hero() {
         return (
 
-            <section id="hero" className="py-2">
+            <section id="hero" className="py-10">
+
                 <div className="grid sm:grid-cols-[1fr_2fr] grid-cols-1 items-center container-page mx-auto">
-                    <div className="text-center sm:text-left py-4 sm:py-16">
-                        <div className="mx-4">
-                            <p className="inline-flex gap-2 justify-center items-center bg-primary/15 border border-primary/10 px-2 py-1 mb-2 rounded-full text-sm font-medium">
-                                Turn your tudos little wins
+                    <div className="text-center sm:text-left py-4 sm:py-16 space-y-6">
+                        <div className="mx-4 space-y-6">
+                            <p className="inline-flex gap-2 justify-center items-center bg-primary/15 border border-primary/10 px-2 py-1 rounded-full text-sm font-medium">
+                                Turn your tudos into little wins
                                 <Sparkles 
                                 size={15} 
                                 color="#F8C44F"
@@ -29,15 +30,16 @@ export function Hero() {
                                 />  
                             </p>
                             <h3 className="text-4xl font-bold">
-                                Get the sh*t done.
-                            </h3>
-                            <p className="text-4xl font-semibold text-primary">
+                                Get the sh*t done. <br/>
+                            <span className="text-4xl font-semibold text-primary">
                                 Feel the joy.
-                            </p>
-                            <p className="py-4">
+                            </span>
+                            </h3>
+
+                            <p className="text-secondary mx-4">
                                 TaskJoy helps you plan, focus and build positive habits - one task at a time.
                             </p>
-                            <ul >
+                            <ul className="font-medium">
                                 <li className="flex items-center gap-2">
                                     <SquareCheckBig size={15} color="#ff6000"/>
                                     <span>Stay organized</span>
@@ -68,25 +70,8 @@ export function Hero() {
                             <Heart size={15} color="#ff6000"/>
                             No credit card required
                         </p>
-                        <div className="px-4 pt-10">
-                           <p className="text-xs text-center">
-                              Trusted by productive people around the world
-                            </p>
-                           <div className="flex items-center sm:justify-start justify-center gap-1">
-                            {Array.from({ length: 5 }).map((_, index) => (
-                                <Star
-                                    key={index}
-                                    size={15}
-                                    color="#F8C44F"
-                                    fill="#F8C44F"
-                                />
-                                ))}
-                                <p>4.9/5 from 1,200+ happy users</p>
-                           </div>
-                        </div>
-
                     </div>
-                    <div className="justify-items-end">
+                    <div className="justify-items-end py-10">
                         <div className="relative w-full max-w-190 aspect-5/4">
                             {/* Decorative orange background */}
                             <div className="absolute inset-x-[5%] max-w-200 aspect-5/4 top-[15%] bottom-0 z-0 rounded-[71%_37%_11%_49%/77%_51%_27%_30%] bg-primary/20"/>
@@ -121,8 +106,26 @@ export function Hero() {
                                 height={180}
                                 className="absolute right-35 sm:right-0 sm:bottom-0 z-30 w-[45%] sm:w-[35%] h-auto"
                                 />
-                        
                         </div>
+                    </div>
+                </div>
+                <div className="container-page flex flex-col items-center sm:items-start justify-items-center text-secondary text-xs text-center">
+                    <p className="hidden sm:inline-flex">
+                        Trusted by productive people around the world
+                    </p>
+                    <div className="flex items-center sm:justify-start justify-center gap-1">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                        <Star
+                            key={index}
+                            size={15}
+                            color="#F8C44F"
+                            fill="#F8C44F"
+                        />
+                        ))}
+                        <p className="text-secondary text-xs">
+                            <span className="font-bold text-foreground">4.9/5 </span>
+                            from 1,200+ happy users
+                        </p>
                     </div>
                 </div>
             </section>
