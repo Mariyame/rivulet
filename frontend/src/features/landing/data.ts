@@ -22,7 +22,7 @@ type Nav = {
     current: boolean;
 }
 export  const navigation: Nav[] = [
-    { name: 'Features', href: '#features', current: false },
+    { name: 'Features', href: '#features', current: true },
     { name: 'How it works', href: '#how', current: false },
     { name: 'Pricing', href: '#pricing', current: false },
     { name: 'Blog', href: '#blog', current: false },
@@ -147,7 +147,7 @@ export const testimonials: Testimonial[] = [
         avatar: emma.toDataUri(),
         rating: 5,
         content: "Simple, beautiful and super motivating. TaskJoy helps me turn my goals into real progress.",
-    },
+    }
 
 ];
 

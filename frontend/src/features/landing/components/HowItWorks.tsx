@@ -36,7 +36,7 @@ export function HowItWorks() {
                                     alt="Smiley star"
                                     width={80}
                                     height={50}
-                                    className={clsx( index === steps.length -1 && "hidden", "absolute left-25 sm:-right-10 md:-right-15 top-19 w-10 z-30 rotate-140 sm:rotate-45")}
+                                    className={clsx( index === steps.length -1 && "hidden", "absolute left-25 sm:left-full  top-19 w-10 z-30 rotate-140 sm:rotate-45")}
                                     />
                                 <div className="mx-4 basis-1/2">
                                     <h3 className="mt-4 font-bold">{step.title}</h3>

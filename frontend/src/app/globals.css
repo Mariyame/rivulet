@@ -8,11 +8,13 @@
   --background: #FFF8ED;
   --surface: #FFFFFF;
   --surface-soft: #FFFCF7;
+  --menu-background: #fff3e5;
 
   /* Text */
   --foreground: #171717;
-  --text-secondary: #6B665F;
+  --secondary-foreground: #6B665F;
   --muted-foreground: #737373;
+  --muted: #6b6b6b;
 
   /* Borders */
   --border: #F1E8DC;
@@ -48,12 +50,13 @@
 @theme {
   --color-primary: var(--primary);
   --color-background: var(--background);
+  --color-menu-background: var(--menu-background);
   --color-foreground: var(--foreground);
-  --color-secondary: var(--secondary);
+  --color-secondary: var(--secondary-foreground);
   --color-border-primary: var(--border);
   /* --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif; */
   --font-sans: var(--font-jakarta);
-  --font-doodle: var(--font-caveat);
+  /* --font-doodle: var(--font-caveat); */
   --container-site: 1200px;
 
 
@@ -80,12 +83,15 @@
 
 }
 
-@layer base {
-  html {
-    font-size: 14px;
+@layer utilities {
+  .font-doodle {
+    font-family: var(--font-caveat);
   }
+}
+
+@layer base {
   body {
-   font-family: var(--font-jakarta);
+   /* font-family: var(--font-jakarta); */
    font-size: 1rem;
    line-height: 1.5;
    background: var(--background);
