@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 13, "column": 0}, "map": {"version":3,"sources":["file:///Users/mac/Desktop/Projects/personal/taskjoy/frontend/src/app/favicon.ico.mjs%20(structured%20image%20object)"],"sourcesContent":["import src from \"IMAGE\";\nexport default { src, width: 1254, height: 1254 }\n"],"names":["src","width","height"],"mappings":";;;;AAAA;;uCACe;IAAEA,KAAAA,0IAAG;IAAEC,OAAO;IAAMC,QAAQ;AAAK"}},
-    {"offset": {"line": 28, "column": 0}, "map": {"version":3,"sources":["file:///Users/mac/Desktop/Projects/personal/taskjoy/frontend/src/app/page.tsx"],"sourcesContent":["\n\nexport default function Home() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      </div>\n  );\n}\n"],"names":["Home","className"],"mappings":";;;;;;AAEe,SAASA;IACtB,qBACE,8OAAC;QAAIC,WAAU;;;;;;AAGnB"}}]
-}
