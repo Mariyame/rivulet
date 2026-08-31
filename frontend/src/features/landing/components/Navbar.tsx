@@ -27,10 +27,13 @@ export function Navbar() {
                 />
             </div>
             <div className="hidden lg:flex">
-                <nav className="">
-                    <ul className="flex gap-8">
+                <nav>
+                    <ul className="flex gap-2">
                         {navigation.map((item) => (
-                            <li key={item.name}>
+                            <li 
+                            key={item.name}
+                            className={clsx( item.current && "bg-primary/10 rounded-xl text-primary", "flex items-center justify-center rounded-xl px-4 py-3 font-semibold text-[#333333] transition-colors hover:bg-primary/10 hover:text-primary")}
+                            >
                                 <Link 
                                 href={item.href}
                                 >
@@ -64,7 +67,7 @@ export function Navbar() {
               <aside 
                   id="mobile-menu"
                   className={clsx(
-                            "fixed z-50 bg-primary text-white w-80 h-screen right-0 top-0 py-10 transition-transform duration-300 ease-in-out",
+                            "fixed z-50 bg-menu-background border-t border-[#ff6000]/10 shadow-[0_12px_40px_rgba(255,96,0,0.08)] text-white w-80 h-screen right-0 top-0 py-10 transition-transform duration-300 ease-in-out",
                             open ? "translate-x-0" : "translate-x-full"
                         )}
                   >
@@ -73,17 +76,17 @@ export function Navbar() {
                         aria-label="Close Menu"
                         onClick={() => setOpen(false)}
                         >
-                        <X color="#ffffff" strokeWidth={4}/>
+                        <X color="#ff6000" strokeWidth={4}/>
                     </button>
                     <nav 
                         aria-label="Mobile navigation"
                         className="mt-6">
-                        <ul className="gap-8">
+                        <ul className="flex flex-col gap-2">
                             {navigation.map((item) => (
                                 <li key={item.name}>
                                     <Link 
                                     href={item.href}
-                                    className="block py-4 text-center"
+                                    className={clsx( item.current && "bg-primary/10 rounded-xl text-primary", "flex items-center justify-center rounded-xl px-4 py-3 font-semibold text-[#333333] transition-colors hover:bg-primary/10 hover:text-primary")}
                                     onClick={() => setOpen(false)}
                                     >
                                     {item.name}
