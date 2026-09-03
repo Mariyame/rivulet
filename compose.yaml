@@ -12,23 +12,52 @@ services:
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:8000
     depends_on:
-      - backend
+      - symfony-api
+      - laravel-api
 
-  backend:
+  laravel-api:
     build:
-      context: ./backend
+      context: ./backend-laravel
       dockerfile: ./Dockerfile
+    working_dir: /var/www/html
+    volumes:
+      - ./backend-laravel:/var/www/html
     ports:
       - "8000:8000"
+    depends_on:
+      - laravel-db  
+
+  laravel-db:
+    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB:-app}", "-U", "${POSTGRES_USER:-app}"]
+      timeout: 5s
+      retries: 5
+      start_period: 60s 
     volumes:
-      - ./backend:/app
+      - laravel_postgres_data:/var/lib/postgresql/data:rwp
+
+  symfony-api:
+    build:
+      context: ./backend-symfony
+      dockerfile: ./Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./backend-symfony:/app
     # environment:
       # DATABASE_URL: "${DATABASE_URL}"
     depends_on:
-      database:
+      symfony-db:
         condition: service_healthy
 
-  database:
+  symfony-db:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-app}
@@ -43,12 +72,13 @@ services:
       retries: 5
       start_period: 60s
     volumes:
-      - database_data:/var/lib/postgresql/data:rw
+      - symfony_postgres_data:/var/lib/postgresql/data:rw
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###
 
 volumes:
 ###> doctrine/doctrine-bundle ###
-  database_data:
+  symfony_postgres_data:
 ###< doctrine/doctrine-bundle ###
+  laravel_postgres_data:
