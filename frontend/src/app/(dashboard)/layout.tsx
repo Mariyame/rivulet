@@ -1,10 +1,28 @@
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-      <div className="w-full flex-none md:w-64">
+'use client'
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth"
 
-      </div>
-      <div className="grow p-6 md:overflow-y-auto md:p-12">{children}</div>
-    </div>
-  );
+export default function Layout({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+  const { isLoading, isAuthenticated } = useAuth();
+
+  useEffect(() => {
+
+    if(!isLoading && !isAuthenticated) {
+      router.replace("/login");
+    }
+
+  },[isLoading, isAuthenticated, router]);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (!isAuthenticated) {
+     return;
+  }
+
+  return children;
+
 }
