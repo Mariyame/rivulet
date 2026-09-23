@@ -19,11 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@/ui/*": ["./src//components/ui/*"],
-      "@/onboarding/*": ["./src/components/onboarding/*"],
-      "@/features/landing/components/*": ["./src/features/landing/components/*"],
-      "@/features/landing/components": ["./src/features/landing/components/index"]
+      "@/*": ["./src/*"],
+      "@/public/*": ["./public/*"],
+      "@/hooks/*": ["./src/hooks/*"],
     }
   },
   "include": [
