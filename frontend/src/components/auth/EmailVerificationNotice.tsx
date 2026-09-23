@@ -1,0 +1,58 @@
+import Image from 'next/image';
+import { Mail, RefreshCw, CircleQuestionMark } from 'lucide-react'
+import TextLink from '@/components/text-link';
+import { Badge } from '@/components/ui/badge';
+import { verifyEmailProps } from '@/types/auth';
+
+export function EmailVerificationNotice(
+    { 
+        email,
+        timeLeft,
+        handleResendEmail
+
+     }
+    : verifyEmailProps) {
+    return(
+        <div className="w-full max-w-md  rounded-2xl p-16 bg-white">
+            <div className='flex flex-col items-center gap-4 pb-6'>
+                <Image 
+                    src="/logo/secondary-logo.svg"
+                    alt="TaskJoy Logo"
+                    width={100}
+                    height={100}
+                    className='py-4'
+                />
+                <h2 className='text-2xl font-bold'>Check your email</h2>
+                <p className='text-muted-foreground text-sm text-center'>We&apos;ve sent a verification link to your email address.
+                Please check your inbox and click the link to confirm your account and get started with TaskJoy.</p>
+                <div className='w-full flex items-center gap-4 p-3 rounded-md bg-ring/10'>
+                <Mail color='#2d2d44'/>
+                <div>
+                    <p className='text-muted-foreground text-sm'>Verification link sent to:</p>
+                    <p>{email}</p>
+                </div>
+                </div>
+
+                <p className='text-muted-foreground text-sm'>Didn&apos;t receive the email?</p>
+                <div className='flex gap-2'>
+                <p className='text-muted-foreground text-sm'>You can resend it in</p>
+                <Badge variant={timeLeft <= 0 ? 'secondary' : 'default'} className='font-semibold'>{String(Math.floor((timeLeft % 3600) / 60)).padStart(2, "0")}:{String(timeLeft % 60).padStart(2, "0")}</Badge>
+                </div>
+                <button 
+                onClick={handleResendEmail} 
+                className='flex items-center text-sm gap-1'
+                >
+                    <RefreshCw size={16} color='#ff6000' strokeWidth="3"/>
+                    Resend email
+                </button>
+            </div>
+            <div className='w-full flex items-center justify-center gap-2 text-sm border-t border-ring/10 pt-6'>
+                <CircleQuestionMark size={20} color='#2d2d44'/>
+                <p className='text-muted-foreground'>Need help?</p>
+                <TextLink href='/support'>
+                    Contact support
+                </TextLink>
+            </div>
+        </div>
+    );
+}

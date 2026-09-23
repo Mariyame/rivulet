@@ -14,7 +14,12 @@ services:
     depends_on:
       - symfony-api
       - laravel-api
-
+      - mailpit
+  mailpit:
+     image: "axllent/mailpit:latest"
+     ports: 
+     - "1025:2525"
+     - "8025:8025"
   laravel-api:
     build:
       context: ./backend-laravel

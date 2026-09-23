@@ -1,5 +1,9 @@
-import { Plus_Jakarta_Sans, Caveat } from "next/font/google";
+import { Plus_Jakarta_Sans, Caveat, Geist } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import { AuthProvider } from "@/providers/AuthProvider";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -20,9 +24,11 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <body className={`${jakarta.variable} ${caveat.variable} antialiased`}>
-        <main className="bg-background">{children}</main>
+         <AuthProvider>
+            <main className="bg-background">{children}</main>
+         </AuthProvider>
       </body>
     </html>
   )

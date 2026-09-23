@@ -1,13 +1,14 @@
 import Image from "next/image";
 import { Heart } from "lucide-react";
-import { GitHubIcon } from "@/public/icons/github";
-import { LinkedInIcon } from "@/public/icons/linkedin";
-import { YoutubeIcon } from "@/public/icons/youtube";
-import { EmailIcon } from "@/public/icons/email";
 import Link from "next/link";
 import Form from "next/form";
 import { footerColumns } from "../data";
 import { FooterColumn } from "./FooterColumn";
+import { GitHubIcon } from "@/public/icons/github";
+import { EmailIcon } from "@/public/icons/email";
+import { LinkedInIcon } from "@/public/icons/linkedin";
+import { YoutubeIcon } from "@/public/icons/youtube";
+
 
 export function Footer() {
     return(
