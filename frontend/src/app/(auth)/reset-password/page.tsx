@@ -6,8 +6,11 @@ import { ResetPasswordForm } from '@/components/auth/ResetPasswordForm';
 import { authService } from '@/services/authService';
 import { getApiError } from '@/lib/error';
 import { useRouter } from 'next/navigation';
+import { Suspense } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
 
-export default function ResetPassword() {
+
+function ResetPasswordContent() {
     const router = useRouter();
     const [errors, setErrors] = useState<Record<string, string[]>>({});
     const [message, setMessage] = useState("");
@@ -29,9 +32,9 @@ export default function ResetPassword() {
             const formData = new FormData(e.currentTarget);
 
             const password = formData.get("password")
-            const password_confirmation = formData.get("password_confirmation");
+            const passwordConfirmation = formData.get("password_confirmation");
 
-            if(typeof password !== "string" || typeof password_confirmation !== "string") {
+            if(typeof password !== "string" || typeof passwordConfirmation !== "string") {
               return;
             }
 
@@ -39,10 +42,10 @@ export default function ResetPassword() {
                 token,
                 email,
                 password,
-                password_confirmation
+                password_confirmation: passwordConfirmation
             });
            setMessage(response.data.message); 
-           router.replace("login");
+           router.replace("/login");
            
 
         } catch(error: unknown) {
@@ -59,11 +62,19 @@ export default function ResetPassword() {
         }
     }
     return(
-      <ResetPasswordForm 
-        handleSubmit={handleSubmit}
-        errors={errors}
-        message={message}
-        isSubmitting={isSubmitting}
-      />
+        <ResetPasswordForm 
+          handleSubmit={handleSubmit}
+          errors={errors}
+          message={message}
+          isSubmitting={isSubmitting}
+        />
     )
+}
+
+export default function ResetPassword() {
+  return (
+    <Suspense fallback={<Skeleton />}>
+       <ResetPasswordContent />
+    </Suspense>
+  )
 }
