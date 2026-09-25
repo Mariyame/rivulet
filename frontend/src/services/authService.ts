@@ -30,5 +30,11 @@ export const authService = {
 
     async resendEmail() {
         return api.post(`${AUTH_BASE_URL}/email/verification-notification`);
+    },
+
+    async loginWithGoogle() {
+       return window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/oauth/google/redirect`;
     }
+
+
 }
