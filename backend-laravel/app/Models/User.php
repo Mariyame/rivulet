@@ -13,6 +13,8 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
+use App\Models\socialAccount;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 
@@ -48,6 +50,11 @@ class User extends Authenticatable implements MustVerifyEmail
         });
 
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public function socialAccounts():HasMany {
+        
+        return $this->hasMany(SocialAccount::class);
     }
 
 }

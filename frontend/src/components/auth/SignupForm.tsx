@@ -4,7 +4,6 @@ import Image from 'next/image';
 import InputError from '@/components/input-error';
 import PasswordInput from '@/components/password-input';
 import TextLink from '@/components/text-link';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -12,6 +11,7 @@ import { Spinner } from '@/components/ui/spinner';
 import { AppleIcon } from '@/public/icons/apple';
 import { GoogleIcon } from '@/public/icons/google';
 import { AuthFromProps } from '@/types/auth';
+import { authService } from '@/services/authService';
 
 export function SignupForm({
   handleSubmit,
@@ -105,30 +105,32 @@ export function SignupForm({
           <InputError message={errors?.password?.[1]} className="mt-1" />
         </div>
         <Button
-          type="submit"
           disabled={isSubmitting}
-          className="w-full rounded-xl bg-primary py-2 text-white hover:bg-primary/90 focus:outline-none focus:ring focus:ring-primary/50"
+          className="w-full"
+          size='lg'
         >
           {isSubmitting && <Spinner />}
           Sign Up
         </Button>
           <p className="text-muted-foreground text-center">or connect with</p>
-      <div className="w-full flex gap-2">
-        <Link
-          href="/auth/google"
-          className="flex gap-2 basis-1/2 items-center justify-center rounded-xl border border-gray-300 bg-white px-4 py-2 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary/50"
-        >
-          <GoogleIcon size={20}/>
-          Google
-        </Link>
-        <Link
-          href="/auth/github"
-          className="flex gap-2 basis-1/2 items-center justify-center rounded-xl border border-gray-300 bg-white px-4 py-2 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary/50"
-        >
-          <AppleIcon size={20}/>
-          Apple
-        </Link>
-      </div>
+          {/* <div className="w-full flex gap-2"> */}
+                <Button
+                    onClick={authService.loginWithGoogle}
+                    className="w-full"
+                    variant='secondary'
+                    size='lg'
+                    >
+                    <GoogleIcon size={20}/>
+                    Google
+                </Button>
+                {/* <button
+                    disabled
+                    className="flex gap-2 basis-1/2 items-center justify-center rounded-xl border border-gray-300 bg-white px-4 py-2 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary/50"
+                    >
+                    <AppleIcon size={20}/>
+                    Apple
+                </button> */}
+          {/* </div> */}
         <div className="text-muted-foreground text-center text-sm">
             Already have an account?{' '}
             <TextLink href="/login" tabIndex={6} className="text-primary hover:text-primary/90 hover:underline">

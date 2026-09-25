@@ -9,6 +9,7 @@ import InputError from '@/components/input-error';
 import { AppleIcon } from '@/public/icons/apple';
 import { GoogleIcon } from '@/public/icons/google';
 import { AuthFromProps } from "@/types/auth";
+import { authService } from "@/services/authService";
 
 
 export function LoginForm({
@@ -72,29 +73,32 @@ export function LoginForm({
                 <InputError message={errors?.password?.[0]} className="mt-1" />
                 </div>
                 <Button
-                type="submit"
-                className="w-full rounded-xl bg-primary py-2 text-white hover:bg-primary/90 focus:outline-none focus:ring focus:ring-primary/50"
+                size="lg"
+                className="w-full"
                 >
                 {isSubmitting ? "Signing in..." : "Sign In"}
                 </Button>
         
                 <p className="text-muted-foreground text-center">or connect with</p>
-                <div className="w-full flex gap-2">
-                    <Link
-                    href="/auth/google"
-                    className="flex gap-2 basis-1/2 items-center justify-center rounded-xl border border-gray-300 bg-white px-4 py-2 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary/50"
-                    >
-                    <GoogleIcon size={20}/>
-                    Google
-                    </Link>
-                    <Link
-                    href="/auth/github"
-                    className="flex gap-2 basis-1/2 items-center justify-center rounded-xl border border-gray-300 bg-white px-4 py-2 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary/50"
-                    >
-                    <AppleIcon size={20}/>
-                    Apple
-                    </Link>
-                </div>
+                {/* <div className="w-full flex gap-2"> */}
+                    <Button
+                        type="button"
+                        onClick={authService.loginWithGoogle}
+                        className="w-full"
+                        variant="secondary"
+                        size="lg"
+                        >
+                        <GoogleIcon size={20}/>
+                        Google
+                    </Button>
+                    {/* <button
+                        disabled
+                        className="flex gap-2 basis-1/2 items-center justify-center rounded-xl border border-gray-300 bg-white px-4 py-2 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary/50"
+                        >
+                        <AppleIcon size={20}/>
+                        Apple
+                    </button> */}
+                {/* </div> */}
                 <div className="text-muted-foreground text-center text-sm">
                     Don&apos;t have an account?{' '}
                     <TextLink href="/signup" className="text-primary hover:underline">

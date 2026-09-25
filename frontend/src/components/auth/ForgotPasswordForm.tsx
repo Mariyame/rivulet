@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import LinkText  from "@/components/text-link";
 import InputError from "@/components/input-error";
 import { AuthFromProps } from "@/types/auth";
+import { ArrowLeft } from "lucide-react";
 
 
 export function ForgotPasswordForm(
@@ -17,8 +18,11 @@ export function ForgotPasswordForm(
 
     return(
        <div className="w-full max-w-md flex flex-col items-center justify-center rounded-2xl p-6 bg-white">
-        <LinkText href="/login" className="text-right"
-        >Back to Sing In
+        <LinkText href="/login" 
+        className="flex flex-row gap-2 items-center self-end text-sm text-muted-foreground"
+        >
+          <ArrowLeft size={20}/>
+          Back to Sing In
         </LinkText>
         <Image 
             src="/logo/secondary-logo.svg"
