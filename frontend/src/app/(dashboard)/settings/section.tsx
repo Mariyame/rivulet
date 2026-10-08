@@ -9,13 +9,11 @@ import {
     ItemMedia,
     ItemTitle,
 } from "@/components/ui/item"
-import { useAuth } from "@/hooks/useAuth"
 
 import { ChevronRightIcon } from "lucide-react"
 import {  accountItems } from "@/data/dashboard"
 
 export default function Account() {
-  const { user } = useAuth()
 
   return (
     <div className="p-6 space-y-6">

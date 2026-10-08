@@ -37,7 +37,8 @@ export const authService = {
     },
 
     async loginWithGoogle() {
-       return window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/oauth/google/redirect`;
+        const redirect_url = `${process.env.NEXT_PUBLIC_API_URL}/oauth/google/redirect`;
+        return redirect_url;
     },
 
     async twoFactorAuth() {

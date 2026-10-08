@@ -16,13 +16,11 @@ import { Check, Laptop, LockKeyhole, Monitor, ShieldCheck, Smartphone } from "lu
 import { Item, ItemDescription, ItemTitle } from "@/components/ui/item"
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { useState } from "react"
 import { TwoFactorAuth } from "./two-factor/two-factor-auth"
 
 
 export function Security() {
-    const [message, setMessage] = useState<string>('');
-    const [errors, setErrors] = useState<Record<string, string[]>>({});
+
 
   return (
        <div className="w-full space-y-6">

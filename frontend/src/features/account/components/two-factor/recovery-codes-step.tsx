@@ -1,4 +1,3 @@
-import InputError from "@/components/input-error";
 import { Alert, AlertAction, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -17,7 +16,7 @@ interface SaveRecoveryCodesStepProps {
     onDone: () => void;
 }
 
-export function SaveRecoveryCodesStep({recoveryCodes, onDone}: SaveRecoveryCodesStepProps) {
+export function SaveRecoveryCodesStep({recoveryCodes}: SaveRecoveryCodesStepProps) {
     return (
         <>
             <DialogHeader>
