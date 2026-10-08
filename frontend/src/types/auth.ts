@@ -50,7 +50,7 @@ export type ResetPasswordCredentials = {
 
 export type AuthFromProps = {
   handleSubmit: React.FormEventHandler<HTMLFormElement>;
-  handleGoogleLogin: () => Promise<void>;
+  handleGoogleLogin?: () => Promise<void>;
   email?: string,
   errors?: Record<string, string[]>;
   message?: string;
