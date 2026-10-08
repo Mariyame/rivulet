@@ -8,7 +8,7 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/components/ui/alert"
-import { AlertTriangleIcon, CheckCircle2Icon, InfoIcon } from "lucide-react"
+import { AlertTriangleIcon, CheckCircle2Icon } from "lucide-react"
 import { useAuth } from "@/hooks/useAuth"
 
 export default function Dashboard() {

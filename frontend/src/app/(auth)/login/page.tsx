@@ -71,7 +71,8 @@ export default function Login() {
         setIsSubmitting(true);
 
       try{
-        await authService.loginWithGoogle();
+        const redirect_url = await authService.loginWithGoogle();
+        router.push(redirect_url)
        
 
       } catch (error) {

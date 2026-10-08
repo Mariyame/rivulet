@@ -14,6 +14,7 @@ import { useState } from "react";
 import { getApiError } from "@/lib/error";
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function TwoFactorQrCodeDialog({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) {
   const [qrCode, setQrCode] = useState<string | null>(null);
@@ -64,7 +65,7 @@ export function TwoFactorQrCodeDialog({ open, setOpen }: { open: boolean; setOpe
         {error && <Alert variant="destructive">{error}</Alert>}
         {qrCode && (
           <div className="flex justify-center my-4">
-            <img src={qrCode} alt="Two-Factor Authentication QR Code" />
+            <Image src={qrCode} alt="Two-Factor Authentication QR Code" />
           </div>
         )}
         {recoveryCodes && (
