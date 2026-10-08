@@ -13,93 +13,11 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { Sun, SquareCheck, Calendar, FolderKanban, Flag, Trophy, Timer, HelpCircle, Settings } from "lucide-react"
+
 import { useAuth } from "@/hooks/useAuth"
 import { Skeleton } from "@/components/ui/skeleton"
 import { sidebarItems } from "@/data/dashboard"
 
-
-// This is sample data.
-const data = {
-  navMain: [
-    {
-      title: "My day",
-      url: "my-day",
-      icon: (
-        <Sun
-        />
-      ),
-      isActive: true,
-    },
-    {
-      title: "Tasks",
-      url: "tasks",
-      icon: (
-        <SquareCheck
-        />
-      ),
-    },
-    {
-      title: "Calendar",
-      url: "calendar",
-      icon: (
-        <Calendar
-        />
-      )
-    },
-    {
-      title: "Projects",
-      url: "projects",
-      icon: (
-        <FolderKanban
-        />
-      )
-    },
-    {
-      title: "Priorities",
-      url: "#",
-      icon: (
-        <Flag
-        />
-      )
-    },
-    {
-      title: "Focus Timer",
-      url: "#",
-      icon: (
-        <Timer
-        />
-      ),
-    },
-    {
-      title: "Rewards",
-      url: "#",
-      icon: (
-        <Trophy
-        />
-      ),
-    },
-  ],
-  navSecondary: [
-    {
-      name: "Settings",
-      url: "/settings",
-      icon: (
-        <Settings
-        />
-      )
-    },
-    {
-      name: "Help & Support",
-      url: "#",
-      icon: (
-        <HelpCircle
-        />
-      ),
-    },
-
-  ],
-}
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { user } = useAuth()

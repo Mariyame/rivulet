@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
-import { AppleIcon } from '@/public/icons/apple';
+// import { AppleIcon } from '@/public/icons/apple';
 import { GoogleIcon } from '@/public/icons/google';
 import { AuthFromProps } from '@/types/auth';
 import { authService } from '@/services/authService';

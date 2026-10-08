@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 import { clsx } from "clsx";
 
 export default function GetStarted() {
-    const [activeStep, setActiveStep ] = useState(0)
+    const [activeStep ] = useState(0)
     return(
         <section id="how" className="w-full py-12">
             <div className="container-page sm:max-w-4xl flex flex-col items-center space-y-4">

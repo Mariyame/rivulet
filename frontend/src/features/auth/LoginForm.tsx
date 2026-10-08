@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import  TextLink  from "@/components/text-link";
 import PasswordInput from "@/components/password-input";
 import InputError from '@/components/input-error';
-import { AppleIcon } from '@/public/icons/apple';
+// import { AppleIcon } from '@/public/icons/apple';
 import { GoogleIcon } from '@/public/icons/google';
 import { AuthFromProps } from "@/types/auth";
 

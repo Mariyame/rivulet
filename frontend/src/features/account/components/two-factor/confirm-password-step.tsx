@@ -11,7 +11,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { TwoFAStepProps } from "@/types/auth";
 
-export function ConfirmPasswordStep({handleSubmit, errors, message, isLoading}: TwoFAStepProps) {
+export function ConfirmPasswordStep({handleSubmit, message, isLoading}: TwoFAStepProps) {
     return (
         <form onSubmit={handleSubmit}>
             <DialogHeader>
