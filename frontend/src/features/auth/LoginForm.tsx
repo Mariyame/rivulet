@@ -83,7 +83,6 @@ export function LoginForm({
                 <p className="text-muted-foreground text-center">or connect with</p>
                 {/* <div className="w-full flex gap-2"> */}
                     <Button
-                        type="submit"
                         onClick={handleGoogleLogin}
                         className="w-full"
                         variant="secondary"
