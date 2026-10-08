@@ -75,6 +75,20 @@ export function ClipboardIllustration({
             1
           </text>
       </g>
+      {/* <g transform="translate(150 -60)" filter="url(#ct-shadow)">
+        <rect width="60" height="60" rx="80" fill="#ff6000"/>
+          <text
+            x="30"
+            y="31"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill="white"
+            fontSize="45"
+            fontWeight="700"
+          >
+            1
+          </text>
+      </g> */}
     </svg>
   );
 }

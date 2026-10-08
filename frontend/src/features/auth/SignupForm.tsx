@@ -105,6 +105,7 @@ export function SignupForm({
           <InputError message={errors?.password?.[1]} className="mt-1" />
         </div>
         <Button
+          type='submit'
           disabled={isSubmitting}
           className="w-full"
           size='lg'
@@ -115,6 +116,7 @@ export function SignupForm({
           <p className="text-muted-foreground text-center">or connect with</p>
           {/* <div className="w-full flex gap-2"> */}
                 <Button
+                    type="submit"
                     onClick={authService.loginWithGoogle}
                     className="w-full"
                     variant='secondary'

@@ -8,6 +8,10 @@ export const authService = {
         return api.post(`${AUTH_BASE_URL}/login`, credentials);
     },
 
+    async confirmPassword(password: string) {
+        return api.post(`${AUTH_BASE_URL}/user/confirm-password`, { password });
+    },
+
     async signup(credentials: SignUpCredentials) {
         return api.post(`${AUTH_BASE_URL}/register`, credentials);
     },
@@ -34,7 +38,37 @@ export const authService = {
 
     async loginWithGoogle() {
        return window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/oauth/google/redirect`;
-    }
+    },
+
+    async twoFactorAuth() {
+        return api.post(`${AUTH_BASE_URL}/user/two-factor-authentication`);
+    },
+
+    async getTwoFactorQrCode() {
+        return api.get(`${AUTH_BASE_URL}/user/two-factor-qr-code`);
+    },
+
+    async confirmedTwoFactorAuth(code: string) {
+        return api.post(`${AUTH_BASE_URL}/user/confirmed-two-factor-authentication`, {code});
+    },
+
+    async getRecoveryCodes() {
+        return api.get(`${AUTH_BASE_URL}/user/two-factor-recovery-codes`);
+    },
+
+    async disabledTwoFactorAuth() {
+        return api.delete(`${AUTH_BASE_URL}/user/two-factor-authentication`);
+    },
+
+    async updateUserProfile(name: string, email: string) {
+        return api.put(`${AUTH_BASE_URL}/user/profile-information`, {name, email});
+    },
+
+    async twoFactorChallenge(code: string) {
+        return api.post(`${AUTH_BASE_URL}/two-factor-challenge`, {code});
+    },
+
+
 
 
 }

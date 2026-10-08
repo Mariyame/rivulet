@@ -1,4 +1,4 @@
-import { steps } from "../data";
+import { steps } from "@/data/content";
 import clsx from "clsx";
 import Image from "next/image";
 

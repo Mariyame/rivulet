@@ -74,14 +74,6 @@ return [
     */
 
     'home' => '/home',
-    'redirects' => [
-    'login' => null,
-    'logout' => null,
-    'password-confirmation' => null,
-    'register' => 'http://localhost:3000/verify-email',
-    'email-verification' => 'http://localhost:3000/dashboard',
-    'password-reset' => null,
-],
 
     /*
     |--------------------------------------------------------------------------
