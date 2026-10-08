@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Heart } from "lucide-react";
 import Link from "next/link";
 import Form from "next/form";
-import { footerColumns } from "../data";
+import { footerColumns } from "../../../data/content";
 import { FooterColumn } from "./FooterColumn";
 import { GitHubIcon } from "@/public/icons/github";
 import { EmailIcon } from "@/public/icons/email";

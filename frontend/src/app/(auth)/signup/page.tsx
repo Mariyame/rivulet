@@ -1,6 +1,6 @@
 'use client';
 
-import { SignupForm } from "@/components/auth/SignupForm";
+import { SignupForm } from "@/features/auth/SignupForm";
 import { useAuth } from "@/hooks/useAuth";
 import { useState } from 'react';
 import { SignUpCredentials } from "@/types/auth";

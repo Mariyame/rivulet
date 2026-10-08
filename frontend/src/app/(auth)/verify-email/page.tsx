@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { EmailVerificationNotice } from '@/components/auth/EmailVerificationNotice';
+import { EmailVerificationNotice } from '@/features/auth/EmailVerificationNotice';
 
 export default function VerifyEmail() {
     const [timeLeft, setTimeLeft] = useState(60);

@@ -36,7 +36,7 @@ export function Hero() {
                             </span>
                             </h3>
 
-                            <p className="text-secondary mx-4">
+                            <p className="text-foreground mx-4">
                                 TaskJoy helps you plan, focus and build positive habits - one task at a time.
                             </p>
                             <ul className="font-medium">
@@ -56,7 +56,7 @@ export function Hero() {
                         </div>
 
                         <div className="flex gap-2 sm:gap-4 pt-4">
-                                <Link href="/started" className="flex items-center justify-center gap-2 bg-primary border border-primary/10 text-white rounded-3xl py-1.5 px-4">
+                                <Link href="/signup" className="flex items-center justify-center gap-2 bg-primary border border-primary/10 text-white rounded-3xl py-1.5 px-4">
                                     Get started free
                                     <ArrowRight size={15}/>
                                 </Link>
@@ -109,7 +109,7 @@ export function Hero() {
                         </div>
                     </div>
                 </div>
-                <div className="container-page flex flex-col items-center sm:items-start justify-items-center text-secondary text-xs text-center">
+                <div className="container-page flex flex-col items-center sm:items-start justify-items-center text-foreground text-xs text-center">
                     <p className="hidden sm:inline-flex">
                         Trusted by productive people around the world
                     </p>
@@ -122,7 +122,7 @@ export function Hero() {
                             fill="#F8C44F"
                         />
                         ))}
-                        <p className="text-secondary text-xs">
+                        <p className="text-foreground text-xs">
                             <span className="font-bold text-foreground">4.9/5 </span>
                             from 1,200+ happy users
                         </p>

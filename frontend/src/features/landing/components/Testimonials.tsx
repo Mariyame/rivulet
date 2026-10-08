@@ -1,6 +1,6 @@
 "use client"
 
-import { testimonials } from "../data"
+import { testimonials } from "../../../data/content"
 import { Star, Heart } from "lucide-react";
 import Image from "next/image";
 import clsx from "clsx";
@@ -54,7 +54,7 @@ export function Testimonials() {
                     />
                     <div className="">
                         <p className="font-bold">{testimonial.fullname}</p>
-                        <p className="text-sm text-secondary">{testimonial.role}</p>
+                        <p className="text-sm text-foreground">{testimonial.role}</p>
                     </div>
                    </div>
                 </div>

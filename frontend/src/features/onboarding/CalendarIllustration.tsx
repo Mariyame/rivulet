@@ -73,7 +73,8 @@ export function CalendarIllustration({ className, ...props }: SVGProps<SVGSVGEle
       </g>
 
       <path d="M359 305L372 294" stroke="#FF6000" strokeWidth="8" strokeLinecap="round"/>
-      <circle cx="83" cy="180" r="5" fill="#C084FC"/>
+      {/* <circle cx="83" cy="180" r="5" fill="#C084FC"/> */}
+      <circle cx="283" cy="280" r="55" fill="#C084FC"/>
     </svg>
   );
 }

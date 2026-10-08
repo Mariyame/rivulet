@@ -1,15 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { LoginForm }  from "@/components/auth/LoginForm";
-import { useAuth } from '@/hooks/useAuth';
+import { LoginForm }  from "@/features/auth/LoginForm";
+import { authService } from '@/services/authService';
 import { getApiError } from '@/lib/error';
 import { useRouter } from 'next/navigation';
+import { TwoFactorAuthDialog } from '@/features/account/components/two-factor/two-factor-auth-dialog'; 
 
 
 export default function Login() {
    
-      const { login } = useAuth();
+
+      const [isDialogOpen, setIsDialogOpen] = useState(false)    
       const [errors, setErrors] = useState<Record<string, string[]>>({});
       const [message, setMessage ]= useState('');
       const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,7 +24,6 @@ export default function Login() {
         setMessage("");
         setIsSubmitting(true);
 
-        
         try {
             const formData = new FormData(e.currentTarget);
             
@@ -32,11 +33,18 @@ export default function Login() {
             if(typeof email !== "string" || typeof password !== "string") {
                 return;
             }
-            login({
+
+            const response = await authService.login({
                 email,
                 password
             });
-        router.replace("/dashboard");
+            if(response.data.two_factor) {
+              setIsDialogOpen(true);
+            } else{
+
+                router.replace('/dashboard')
+            }
+       
         
         } catch(error: unknown) {
             const response = getApiError(error);
@@ -53,17 +61,43 @@ export default function Login() {
             setMessage(response.message);
         }
         finally{
-            
             setIsSubmitting(false);
         }
     }
+    const handleGoogleLogin = async () => {
+
+        setErrors({});
+        setMessage('');
+        setIsSubmitting(true);
+
+      try{
+        await authService.loginWithGoogle();
+       
+
+      } catch (error) {
+        const response = getApiError(error);
+        if(response.status === 422) {
+            setErrors(response.errors);
+        }
+
+        setMessage(response.message);
+      }
+      finally {
+        setIsSubmitting(false);
+      }
+    }
 
   return (
-      <LoginForm 
-        handleSubmit={handleSubmit}
-        errors={errors}
-        message={message}
-        isSubmitting={isSubmitting}
-        />
+    <>
+    <TwoFactorAuthDialog open={isDialogOpen} onChangeOpen={setIsDialogOpen}/>
+    
+    <LoginForm 
+      handleSubmit={handleSubmit}
+      handleGoogleLogin={handleGoogleLogin}
+      errors={errors}
+      message={message}
+      isSubmitting={isSubmitting}
+      />
+    </>
   );
 } 

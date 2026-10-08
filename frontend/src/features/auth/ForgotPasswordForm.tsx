@@ -21,7 +21,7 @@ export function ForgotPasswordForm(
         <LinkText href="/login" 
         className="flex flex-row gap-2 items-center self-end text-sm text-muted-foreground"
         >
-          <ArrowLeft size={20}/>
+          <ArrowLeft size={15}/>
           Back to Sing In
         </LinkText>
         <Image 
@@ -58,7 +58,8 @@ export function ForgotPasswordForm(
             </div>
             <Button
             type="submit"
-            className="w-full rounded-xl bg-primary py-2 text-white hover:bg-primary/90 focus:outline-none focus:ring focus:ring-primary/50"
+            size="lg"
+            className="w-full"
             >
             {isSubmitting ? "Sending..." : "Send Reset Link"}
             </Button>            

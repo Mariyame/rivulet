@@ -3,8 +3,9 @@ import  Image  from "next/image";
 import Link from "next/link";
 import { clsx } from "clsx";
 import { Menu, X, ArrowRight } from "lucide-react";
-import { navigation } from "../data";
-import {useState, useEffect } from "react"
+import { navigation } from "../../../data/content";
+import {useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 export function Navbar() {
     const [open, setOpen ] = useState(false);
@@ -45,14 +46,16 @@ export function Navbar() {
                 </nav>
             </div>
             <div className="hidden lg:flex gap-4">
-                <button className="bg-white border border-white/10 rounded-3xl py-1 px-4 inset-shadow-sm">
+                <Button 
+                    variant="secondary"
+                    className="bg-white border border-white/10 rounded-3xl py-1 px-4 inset-shadow-sm">
                     <Link href="/login">Login</Link>
-                </button>
+                </Button>
 
-                <button className="flex items-center gap-2 bg-primary border border-primary/10 text-white rounded-3xl py-1 px-4">
-                    <Link href="/started">Get started free</Link>
+                <Button className="flex items-center gap-2 bg-primary border border-primary/10 text-white rounded-3xl py-1 px-4">
+                    <Link href="/signup">Get started free</Link>
                     <ArrowRight size={15}/>
-                </button>
+                </Button>
             </div>
             
               <button

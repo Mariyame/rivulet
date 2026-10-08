@@ -17,7 +17,7 @@ export function CTA() {
                 </div>
                 <div className="flex items-center justify-center gap-2 pt-4">
                     <div className="flex items-center justify-center gap-2 bg-white border border-primary/10 text-primary rounded-3xl py-2 px-4">
-                        <Link href="/started" className="font-bold text-sm">Get started free</Link>
+                        <Link href="/signup" className="font-bold text-sm">Get started free</Link>
                         <ArrowRight size={10}/>
                     </div>
                     <div className="flex items-center justify-center gap-2 bg-primary text-white border border-white rounded-3xl py-2 px-10 inset-shadow-sm">

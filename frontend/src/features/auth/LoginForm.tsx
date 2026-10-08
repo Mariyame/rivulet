@@ -9,11 +9,12 @@ import InputError from '@/components/input-error';
 import { AppleIcon } from '@/public/icons/apple';
 import { GoogleIcon } from '@/public/icons/google';
 import { AuthFromProps } from "@/types/auth";
-import { authService } from "@/services/authService";
+
 
 
 export function LoginForm({
     handleSubmit,
+    handleGoogleLogin,
     errors,
     message,
     isSubmitting = false
@@ -36,7 +37,6 @@ export function LoginForm({
                 className="w-full p-6 space-y-4"
             >
                 <InputError message={message} className="mt-1" />
-
             
                 <div className="flex flex-col gap-1">
                 <Label htmlFor="email" className="text-sm font-semibold">
@@ -73,6 +73,7 @@ export function LoginForm({
                 <InputError message={errors?.password?.[0]} className="mt-1" />
                 </div>
                 <Button
+                type="submit"
                 size="lg"
                 className="w-full"
                 >
@@ -82,8 +83,8 @@ export function LoginForm({
                 <p className="text-muted-foreground text-center">or connect with</p>
                 {/* <div className="w-full flex gap-2"> */}
                     <Button
-                        type="button"
-                        onClick={authService.loginWithGoogle}
+                        type="submit"
+                        onClick={handleGoogleLogin}
                         className="w-full"
                         variant="secondary"
                         size="lg"
@@ -92,6 +93,7 @@ export function LoginForm({
                         Google
                     </Button>
                     {/* <button
+                        type="submit"
                         disabled
                         className="flex gap-2 basis-1/2 items-center justify-center rounded-xl border border-gray-300 bg-white px-4 py-2 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary/50"
                         >
