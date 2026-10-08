@@ -69,8 +69,8 @@ export function ResetPasswordForm(
         </div>
         <Button
           type="submit"
-    
-          className="w-full rounded-xl bg-primary py-2 text-white hover:bg-primary/90 focus:outline-none focus:ring focus:ring-primary/50"
+          size="lg"
+          className="w-full"
         >
           {isSubmitting ? <><span>Changing...</span> <Spinner /></> : 'Change'}
         </Button>

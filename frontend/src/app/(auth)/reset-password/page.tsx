@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { ResetPasswordForm } from '@/components/auth/ResetPasswordForm';
+import { ResetPasswordForm } from '@/features/auth/ResetPasswordForm';
 import { authService } from '@/services/authService';
 import { getApiError } from '@/lib/error';
 import { useRouter } from 'next/navigation';

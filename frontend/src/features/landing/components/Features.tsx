@@ -1,4 +1,4 @@
-import { features } from "../data";
+import { features } from "../../../data/content";
 import clsx from "clsx";
 
 export function Features() {

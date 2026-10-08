@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ForgotPasswordForm } from '@/components/auth/ForgotPasswordForm';
+import { ForgotPasswordForm } from '@/features/auth/ForgotPasswordForm';
 import { authService } from '@/services/authService';
 import { getApiError } from '@/lib/error';
 

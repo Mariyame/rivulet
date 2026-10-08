@@ -1,4 +1,11 @@
 import { 
+  Nav,
+  Feature,
+  Step,
+  Testimonial
+ } from "@/types/landing";
+
+import { 
     ChartNoAxesCombined, 
     Trophy, 
     CircleCheck,
@@ -6,21 +13,12 @@ import {
     Calendar,
 } from 'lucide-react';
 
-import { TrophyIllustration } from './components/steps/TrophyIllustration';
-import { CalendarIllustration } from './components/steps/CalendarIllustration';
-import { ClipboardIllustration } from './components/steps/ClipboardIllustration';
+import { TrophyIllustration } from '../features/landing/components/steps/TrophyIllustration';
+import { CalendarIllustration } from '../features/landing/components/steps/CalendarIllustration';
+import { ClipboardIllustration } from '../features/landing/components/steps/ClipboardIllustration';
 import { Style, Avatar } from '@dicebear/core';
 import definition from '@dicebear/styles/moods.json' with { type: 'json' };
 
-
-
-
-
-type Nav = {
-    name: string;
-    href: string;
-    current: boolean;
-}
 export  const navigation: Nav[] = [
     { name: 'Features', href: '#features', current: true },
     { name: 'How it works', href: '#how', current: false },
@@ -28,15 +26,6 @@ export  const navigation: Nav[] = [
     { name: 'Blog', href: '#blog', current: false },
     { name: 'FAQ', href: '#faq', current: false },
 ];
-import type { LucideIcon } from "lucide-react";
-
-type Feature = {
-  icon: LucideIcon;
-  color: string;
-  bgColor: string;
-  title: string;
-  description: string;
-};
 
 export const features: Feature[] = [
     { 
@@ -76,12 +65,6 @@ export const features: Feature[] = [
     },
 ];
 
-type Step = {
-    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-    class: string;
-    title: string;
-    description: string;
-}
 export const steps: Step[] = [
     {
         icon: ClipboardIllustration,
@@ -113,15 +96,6 @@ const alex = new Avatar(style, {
 const emma = new Avatar(style, {
   "seed": "Emma"
 });
-
-type Testimonial = {
-  id: number;
-  fullname: string;
-  role: string;
-  avatar: string;
-  rating: number;
-  content: string;
-};
 
 export const testimonials: Testimonial[] = [
     {

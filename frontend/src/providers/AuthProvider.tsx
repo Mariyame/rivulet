@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { AuthContext } from '@/contexts/AuthContext';
 import { LoginCredentials, SignUpCredentials, User } from '@/types/auth';
 import { authService } from '@/services/authService';
+import { mapUser } from '@/lib/utils';
 
 export function AuthProvider({children}: {children: React.ReactNode}) {
     
@@ -22,8 +23,8 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
                 if (currentRequestId !== requestId.current) {
                     return;
                 }
+                setUser(mapUser(response.data));
 
-                setUser(response.data);
             } catch (error) {
                 if (currentRequestId !== requestId.current) {
                     return;
@@ -44,8 +45,6 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
         initializeAuth();
     }, []);
 
-  
-
     const login = async (credentials: LoginCredentials) => {
         requestId.current++;
         setIsLoading(true)
@@ -60,12 +59,20 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
        }
     };
 
+    const confirmPassword = async (password: string) => {
+        try {
+            await authService.confirmPassword(password);
+        } catch (error) {
+            throw error;
+        }
+    };
+
     async function signup(credentials: SignUpCredentials) {
         try {
             await authService.signup(credentials);
             const response = await authService.getUser();
             setUser(response.data);
-        }catch {
+        } catch {
            setUser(null);
         } finally {
             setIsLoading(false);
@@ -87,8 +94,31 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
 
     const resendEmail = async () => {
         await authService.resendEmail();
-    }
+    };
 
+    const twoFactorAuth = async () => {
+        await authService.twoFactorAuth();
+    };
+
+    const twoFactorQrCode = async () => {
+        await authService.getTwoFactorQrCode();
+    };
+
+    const confirmedTwoFactorAuth = async (code: string) => {
+        await authService.confirmedTwoFactorAuth(code);
+    };
+
+    const recoveryCodes = async () => {
+        await authService.getRecoveryCodes();
+    };
+
+    const disabledTwoFactorAuth = async () => {
+        await authService.disabledTwoFactorAuth();
+    };
+
+    const updateUserProfileInformation = async (name: string, email:string) => {
+        await authService.updateUserProfile(name, email);
+    }
 
     return(
      <AuthContext value=
@@ -96,7 +126,9 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
             user,
             isLoading,
             isAuthenticated: user !== null,
+            isVerified: user?.verified !== null,
             login,
+            confirmPassword,
             signup,
             logout,
             forgotPassword,
@@ -105,6 +137,12 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
                 setUser(response.data);
             },
             resendEmail,
+            twoFactorAuth,
+            twoFactorQrCode,
+            confirmedTwoFactorAuth,
+            recoveryCodes,
+            disabledTwoFactorAuth,
+            updateUserProfileInformation
          }}
         >
         {children}

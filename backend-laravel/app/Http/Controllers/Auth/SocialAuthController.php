@@ -12,35 +12,41 @@ use App\Services\Auth\SocialAuthService;
 class SocialAuthController extends Controller
 {
     public function redirect(Request $request) {
-      
-           $response = Socialite::driver('google')->redirect();
-
-    logger()->info('OAuth session', [
-        'session_id' => $request->session()->getId(),
-        'state' => $request->session()->get('state'),
-    ]);
-
-    return $response;
-
+        return Socialite::driver('google')->redirect();
     }
 
     public function callback(Request $request, SocialAuthService $socialAuthService) {
-          logger()->info('OAuth callback session', [
-        'session_id' => $request->session()->getId(),
-        'state' => $request->session()->get('state'),
-        'query_state' => $request->query('state'),
-    ]);
-      $googleUser = Socialite::driver('google')->user();
 
-      $user = $socialAuthService->authenticate(
-        provider: 'google',
-        providerUser: $googleUser
-      );
+     try{
+            $googleUser = Socialite::driver('google')->user();
+            $existingUser = User::where(
+                'email',
+                $googleUser->email
+            )->first();
 
-      Auth::login($user);
+            if ($existingUser) {
+                return redirect()->away(
+                    config('app.frontend_url') .
+                    '/login?error=email_exists'
+                );
+            }
 
-      $request->session()->regenerate();
+            $user = $socialAuthService->authenticate(
+            provider: 'google',
+            providerUser: $googleUser
+            );
 
-      return redirect(config('app.frontend_url').'/callback');
+            Auth::login($user);
+
+            $request->session()->regenerate();
+
+        return redirect()->away(
+            config('app.frontend_url') . '/dashboard'
+        );
+     } catch (\Throwable $e){
+        report($e);
+        return redirect(config('app.frontend_url').'/callback?error=oauth_failed');
+     }
+
     }
 }
