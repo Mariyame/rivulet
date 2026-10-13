@@ -50,7 +50,7 @@ export function TeamSwitcher({
             <div className="flex  items-center justify-center text-sidebar-primary-foreground">
             <Image 
                 src="/logo/logo.svg"
-                alt="TaskJoy Logo"
+                alt="Rivulet Logo"
                 width={150}
                 height={80}
                 className=''

@@ -24,13 +24,9 @@ import { useAuth } from "@/hooks/useAuth"
 export function TwoFactorAuth() {
     const { user } = useAuth()
     const [isDialogOpen, setIsDialogOpen] = useState(false)
-    const [isTwoFAEnabled, setIsTwoFAEnabled] = useState(user?.twoFA ?? false)
-
     
-    const handleSwitchChange = () => {
-      setIsDialogOpen(true)
-      setIsTwoFAEnabled(user?.twoFA ?? false)
-    }
+    const isTwoFAEnabled = user?.twoFA ?? false
+    
    
     return (    
             <Card className="w-full">
@@ -51,7 +47,7 @@ export function TwoFactorAuth() {
                             <Switch 
                                id="2fa"
                                checked={isTwoFAEnabled}
-                               onCheckedChange={handleSwitchChange}
+                               onCheckedChange={() => setIsDialogOpen(true)}
                             />
                             
                             <Label htmlFor="2fa">Enable 2FA</Label>

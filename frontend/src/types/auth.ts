@@ -95,5 +95,6 @@ export type TwoFADialogProps = {
     code: string;
     setCode: React.Dispatch<React.SetStateAction<string>>;
     message: string;
+    errors?: Record<string, string[]>;
     onBack?: () => void
 }

@@ -15,7 +15,7 @@ export default function GetStarted() {
             <div className="container-page sm:max-w-4xl flex flex-col items-center space-y-4">
                 <Image 
                     src="/logo/logo.svg"
-                    alt="TaskJoy Logo"
+                    alt="Rivulet Logo"
                     width={200}
                     height={100}
                     className=''
@@ -32,7 +32,7 @@ export default function GetStarted() {
 
                 <div className="relative grid grid-cols-1 sm:grid-cols-3 items-center gap-6 py-6">
                     {steps.map((step) => {
-                        const Icon = step.icon;
+                    
                         return (
                         <div
                             key={step.title}
@@ -40,7 +40,7 @@ export default function GetStarted() {
                         >
                             <div className="flex flex-col items-center">
                                 <div className="flex items-center justify-center h-55 w-55">
-                                    <Icon className="h-65 w-55" />
+                                 
                                 </div>
               
                                 <div className="mx-4 basis-1/2">

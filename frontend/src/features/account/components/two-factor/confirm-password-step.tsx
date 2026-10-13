@@ -8,6 +8,7 @@ import {
     DialogHeader, 
     DialogTitle
 } from "@/components/ui/dialog";
+import { Field } from "@/components/ui/field";
 import { Label } from "@/components/ui/label";
 import { TwoFAStepProps } from "@/types/auth";
 
@@ -22,14 +23,14 @@ export function ConfirmPasswordStep({handleSubmit, message, isLoading}: TwoFASte
             </DialogHeader>
             <div className="grid gap-4 py-4">
             {message && <InputError message={message} className="mt-1" />}
-            <div className="grid gap-2">
+            <Field>
                 <Label htmlFor="password">Password</Label>
                 <PasswordInput
                 id="password"
                 name="password"
                 autoFocus
                 />
-            </div>
+            </Field>
             </div>
             <DialogFooter>
             <DialogClose render={

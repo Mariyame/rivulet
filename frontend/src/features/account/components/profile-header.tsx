@@ -16,7 +16,7 @@ export function ProfileHeader() {
                     <ItemDescription>Manage your profile, security and preferences all in one place.</ItemDescription>
                 </ItemContent>
             </Item>
-            <Item variant="outline" size="md" className="w-full bg-primary/10">
+            <Item variant="outline" size="md" className="w-full bg-dark-background">
                 <ItemMedia>
                 <Avatar size="lg">
                 <AvatarImage src=""></AvatarImage>

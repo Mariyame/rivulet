@@ -31,12 +31,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   }))
 
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="icon" {...props} className="bg-dark-background">
       <SidebarHeader>
-      <div className="flex items-center text-sidebar-primary-foreground">
+      <div>
         <Image 
-            src="/logo/logo.svg"
-            alt="TaskJoy Logo"
+            src="/logo/rivulet-logo-dark.svg"
+            alt="Rivulet Logo"
             width={120}
             height={60}
             className=''

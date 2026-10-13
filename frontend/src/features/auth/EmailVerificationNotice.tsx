@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Mail, RefreshCw, CircleQuestionMark } from 'lucide-react'
 import TextLink from '@/components/text-link';
 import { Badge } from '@/components/ui/badge';
@@ -14,18 +13,11 @@ export function EmailVerificationNotice(
      }
     : verifyEmailProps) {
     return(
-        <div className="w-full max-w-md  rounded-2xl p-16 bg-white">
-            <div className='flex flex-col items-center gap-4 pb-6'>
-                <Image 
-                    src="/logo/secondary-logo.svg"
-                    alt="TaskJoy Logo"
-                    width={100}
-                    height={100}
-                    className='py-4'
-                />
-                <h2 className='text-2xl font-bold'>Check your email</h2>
+        <div className="w-full max-w-md p-6">
+            <div className='flex flex-col items-center justify-center py-12 px-[clamp(20px,5vw,64px)]'>
+                <p className='text-center font-heading font-bold text-[36px] leading-[1.1] tracking-[-0.5px]'>Check your email</p>
                 <p className='text-muted-foreground text-sm text-center'>We&apos;ve sent a verification link to your email address.
-                Please check your inbox and click the link to confirm your account and get started with TaskJoy.</p>
+                Please check your inbox and click the link to confirm your account and get started with Rivulet.</p>
                 <div className='w-full flex items-center gap-4 p-3 rounded-md bg-ring/10'>
                 <Mail color='#2d2d44'/>
                 <div>
