@@ -14,7 +14,7 @@ import { useAuth } from "@/hooks/useAuth"
 export default function Dashboard() {
   const searchParams = useSearchParams();
   const verified = searchParams.get("verified");
-  const { user } = useAuth()
+  const {  isVerified } = useAuth()
   
   return (
         <>
@@ -27,7 +27,7 @@ export default function Dashboard() {
             </AlertDescription>
           </Alert> 
            }
-           { (user?.verified  || verified !== "1") && 
+           { (!isVerified) && 
  
          <Alert className="max-w-3xl border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50">
               <AlertTriangleIcon />
@@ -41,7 +41,6 @@ export default function Dashboard() {
             </Alert>
            }
 
-        
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
             <div className="aspect-video rounded-xl bg-muted/20" />
             <div className="aspect-video rounded-xl bg-muted/20" />

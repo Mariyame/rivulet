@@ -9,8 +9,7 @@ import { VerifyCodesStep } from "./verify-codes-step";
 import { SaveRecoveryCodesStep } from "./recovery-codes-step";
 import { authService } from "@/services/authService";
 import { TwoFADialogProps } from "@/types/auth";
-import { TwoFactorChallenge } from "./two-factor-challenge";
-import { useRouter } from "next/navigation"
+import { useAuth } from "@/hooks/useAuth";
 
 
 export function TwoFactorAuthDialog ({open, onChangeOpen}: TwoFADialogProps) {
@@ -19,10 +18,11 @@ export function TwoFactorAuthDialog ({open, onChangeOpen}: TwoFADialogProps) {
     const [message, setMessage] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [qrCode, setQrCode] = useState('')
-    const [step, setStep] = useState("challenge")
+    const [step, setStep] = useState("password")
     const [code, setCode] = useState('')
     const [recoveryCodes, setRecoveryCodes] = useState<string[]>([]);
-    const router = useRouter()
+    const { user } = useAuth();
+    const [isTwoFAEnabled, setIsTwoFAEnabled] = useState(user?.twoFA ?? false)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -41,6 +41,12 @@ export function TwoFactorAuthDialog ({open, onChangeOpen}: TwoFADialogProps) {
 
     try{
       await authService.confirmPassword(password);
+      if(isTwoFAEnabled) {
+        await authService.disableTwoFactorAuth();
+        setIsTwoFAEnabled(false)
+        // onChangeOpen(false)
+        return;
+      }
       await authService.twoFactorAuth()
       const response = await authService.getTwoFactorQrCode();
       
@@ -72,21 +78,6 @@ export function TwoFactorAuthDialog ({open, onChangeOpen}: TwoFADialogProps) {
       const recoveryCodes = await authService.getRecoveryCodes();
       setRecoveryCodes(recoveryCodes.data);
       setStep("done")
-     }catch (error: unknown) {
-      const response = getApiError(error)
-      setMessage(response.message)
-     }
-  }
-
-    const handleTwoFactorChallenge = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-     try{
-      const response  = await authService.twoFactorChallenge(code)
-      if(response.status === 204) {
-        setMessage("Login is successful")
-        router.replace('/dashboard')
-      }
-
      }catch (error: unknown) {
       const response = getApiError(error)
       setMessage(response.message)
@@ -127,14 +118,6 @@ export function TwoFactorAuthDialog ({open, onChangeOpen}: TwoFADialogProps) {
         onDone={() => setStep("done")}
         />
       )} 
-      {step === "challenge" && (
-        <TwoFactorChallenge 
-          handleTwoFactorChallenge={handleTwoFactorChallenge}
-          code={code}
-          setCode={setCode}
-          message={message}
-        />
-      )}
       </DialogContent >
     </Dialog>
   );

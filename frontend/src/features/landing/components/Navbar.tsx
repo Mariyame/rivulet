@@ -2,26 +2,31 @@
 import  Image  from "next/image";
 import Link from "next/link";
 import { clsx } from "clsx";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X} from "lucide-react";
 import { navigation } from "../../../data/content";
 import {useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 
 export function Navbar() {
     const [open, setOpen ] = useState(false);
     useEffect(() => {
-        document.body.style.overflow = open ? "hidden" : "";
+        if(!open)
+            return;
+        const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+        document.addEventListener("keydown", onKey);
+        document.body.style.overflow =  "hidden";
 
         return () => {
+            document.removeEventListener("keydown", onKey);
             document.body.style.overflow = "";
         };
     }, [open]);
+
     return(
-        <div className="flex justify-between items-center">
+        <div className="container-page relative z-50 flex items-center justify-between gap-4 py-6">
             <div className="shrink-0">
                 <Image 
-                  src="./logo/logo.svg"
-                  alt="TaskJoy logo"
+                  src="./logo/rivulet-logo-dark.svg"
+                  alt="Rivulet logo"
                   width={120}
                   height={50}
                   priority
@@ -35,7 +40,7 @@ export function Navbar() {
                             key={item.name}
                             className={clsx( item.current && "bg-primary/10 rounded-xl text-primary", "flex items-center justify-center rounded-xl px-4 py-3 font-semibold text-[#333333] transition-colors hover:bg-primary/10 hover:text-primary")}
                             >
-                                <Link 
+                                <Link className="text-white"
                                 href={item.href}
                                 >
                                 {item.name}
@@ -45,51 +50,41 @@ export function Navbar() {
                     </ul>
                 </nav>
             </div>
-            <div className="hidden lg:flex gap-4">
-                <Button 
-                    variant="secondary"
-                    className="bg-white border border-white/10 rounded-3xl py-1 px-4 inset-shadow-sm">
-                    <Link href="/login">Login</Link>
-                </Button>
-
-                <Button className="flex items-center gap-2 bg-primary border border-primary/10 text-white rounded-3xl py-1 px-4">
-                    <Link href="/signup">Get started free</Link>
-                    <ArrowRight size={15}/>
-                </Button>
+            <div className="hidden lg:flex gap-4 items-center">
+                <Link className="text-white font-bold text-[15px] px-4.5 py-3 transition duration-200 hover:-translate-y-0.75 hover-scale-[1.03] hover:brightness-[1.06]" href="/login">Log in</Link>
+                <Link href="/signup" className="px-5.5 py-3 rounded-3xl bg-sunbeam text-foreground font-bold text-[15px] transition duration-200 hover:-translate-y-0.75 hover-scale-[1.03] hover:brightness-[1.06]">Create account</Link>
             </div>
-            
-              <button
-                  className="lg:hidden"
+            <button
+                  type="button"
                   aria-controls="mobile-menu"
-                  aria-label="Open menu"
+                  aria-label={open ? "Close menu" : "Open Menu"}
                   aria-expanded={open}
-                  onClick={() => setOpen(true)}
+                  onClick={() => setOpen((o) => !o)}
+                  className="flex w-11 h-11 bg-white/10 rounded-full items-center justify-center shrink-0 lg:hidden"
                   >
-                <Menu color="#ff6000" strokeWidth={4}/>
+                {open ? <X strokeWidth={2.5} className="text-white size-5"/> : <Menu strokeWidth={2.5} className="text-white size-5"/>}
               </button>
+                <div
+                    onClick={() => setOpen(false)}
+                    className={`fixed inset-0 -z-10 bg-black/40 transition-opacity duration-300 min-[860px]:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
+                />
+              {open && (
               <aside 
                   id="mobile-menu"
                   className={clsx(
-                            "fixed z-50 bg-menu-background border-t border-[#ff6000]/10 shadow-[0_12px_40px_rgba(255,96,0,0.08)] text-white w-80 h-screen right-0 top-0 py-10 transition-transform duration-300 ease-in-out",
-                            open ? "translate-x-0" : "translate-x-full"
+                            "absolute inset-x-5 top-[calc(100%-6px)] flex flex-col rounded-3xl bg-[#2F2350] p-2.5 shadow-[0_24px_60px_rgba(0,0,0,.45)] transition duration-300 ease-out lg:hidden",
+                            open ? "translate-x-0 scale-100 opacity-100" : "pointer-events-none -translate-y-3 scale-95 opacity-0"
                         )}
                   >
-                    <button
-                        className="absolute right-0 top-2 py-2 px-4 md:px-10"
-                        aria-label="Close Menu"
-                        onClick={() => setOpen(false)}
-                        >
-                        <X color="#ff6000" strokeWidth={4}/>
-                    </button>
                     <nav 
                         aria-label="Mobile navigation"
                         className="mt-6">
                         <ul className="flex flex-col gap-2">
                             {navigation.map((item) => (
-                                <li key={item.name}>
+                                <li key={item.href}>
                                     <Link 
                                     href={item.href}
-                                    className={clsx( item.current && "bg-primary/10 rounded-xl text-primary", "flex items-center justify-center rounded-xl px-4 py-3 font-semibold text-[#333333] transition-colors hover:bg-primary/10 hover:text-primary")}
+                                    className={clsx( item.current && "", "flex h-13 items-center rounded-2xl px-4.5 text-[17px] font-bold text-white hover:bg-white/10")}
                                     onClick={() => setOpen(false)}
                                     >
                                     {item.name}
@@ -99,6 +94,7 @@ export function Navbar() {
                         </ul>
                     </nav>
               </aside>
+              )}
         </div>
     )
 }

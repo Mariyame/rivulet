@@ -5,17 +5,16 @@ import { LoginForm }  from "@/features/auth/LoginForm";
 import { authService } from '@/services/authService';
 import { getApiError } from '@/lib/error';
 import { useRouter } from 'next/navigation';
-import { TwoFactorAuthDialog } from '@/features/account/components/two-factor/two-factor-auth-dialog'; 
+import { useAuth } from '@/hooks/useAuth';
 
 
 export default function Login() {
    
-
-      const [isDialogOpen, setIsDialogOpen] = useState(false)    
       const [errors, setErrors] = useState<Record<string, string[]>>({});
       const [message, setMessage ]= useState('');
       const [isSubmitting, setIsSubmitting] = useState(false);
       const router = useRouter();
+       const { isAuthenticated } = useAuth()
   
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -38,10 +37,10 @@ export default function Login() {
                 email,
                 password
             });
-            if(response.data.two_factor) {
-              setIsDialogOpen(true);
-            } else{
 
+            if(response.data.two_factor || !isAuthenticated) {
+               router.replace('/two-factor-challenge')
+            } else {
                 router.replace('/dashboard')
             }
        
@@ -90,8 +89,6 @@ export default function Login() {
 
   return (
     <>
-    <TwoFactorAuthDialog open={isDialogOpen} onChangeOpen={setIsDialogOpen}/>
-    
     <LoginForm 
       handleSubmit={handleSubmit}
       handleGoogleLogin={handleGoogleLogin}

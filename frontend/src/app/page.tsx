@@ -2,8 +2,8 @@ import {
   Navbar,
   Hero,
   Features,
+  Quote,
   HowItWorks,
-  Testimonials,
   CTA,
   Footer
 } from "@/features/landing/components";
@@ -11,13 +11,13 @@ import {
 export default function HomePage() {
   return (
     <>
-      <div className="container-page mx-auto px-2 md:px-4 py-2">
+      <div className="bg-light-gradient">
         <Navbar />
+        <Hero />
       </div>
-      <Hero />
-      <Features />
       <HowItWorks />
-      <Testimonials />
+      <Quote />
+      <Features />
       <CTA />
       <Footer />
     </>

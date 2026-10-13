@@ -16,21 +16,24 @@ import { AppSidebarBreadcrumbs } from "@/components/app-sidebar-breadcrumbs"
 import { getBreadcrumbItems } from "@/lib/utils"
 
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const items = getBreadcrumbItems(pathname);
   const { isLoading, isAuthenticated, isVerified } = useAuth();
 
   useEffect(() => {
+
     if(!isVerified) {
       router.replace("/verify-email")
-      
     }
 
-    if(!isLoading && !isAuthenticated) {
-      router.replace("/login");
-    }
+   if (isLoading) return;
+
+  if (!isAuthenticated) {
+    router.replace("/login");
+    return;
+  }
 
   },[isLoading, isAuthenticated, isVerified, router]);
 

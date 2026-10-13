@@ -6,83 +6,151 @@ import {
  } from "@/types/landing";
 
 import { 
-    ChartNoAxesCombined, 
-    Trophy, 
     CircleCheck,
-    Goal,
-    Calendar,
+    Target,
+    CalendarDays,
+    Repeat,
+    Timer,
+    Waves,
+    Trophy,
+    Award,
+    Sprout,
+    Bell,
+    TrendingUp,
+    RotateCcw,
 } from 'lucide-react';
 
-import { TrophyIllustration } from '../features/landing/components/steps/TrophyIllustration';
-import { CalendarIllustration } from '../features/landing/components/steps/CalendarIllustration';
-import { ClipboardIllustration } from '../features/landing/components/steps/ClipboardIllustration';
 import { Style, Avatar } from '@dicebear/core';
 import definition from '@dicebear/styles/moods.json' with { type: 'json' };
 
 export  const navigation: Nav[] = [
-    { name: 'Features', href: '#features', current: true },
     { name: 'How it works', href: '#how', current: false },
-    { name: 'Pricing', href: '#pricing', current: false },
+    { name: 'Features', href: '#features', current: true },
     { name: 'Blog', href: '#blog', current: false },
     { name: 'FAQ', href: '#faq', current: false },
 ];
 
+export const GOALS = [
+  "read 10 pages",
+  "walk for 15 minutes",
+  "write one paragraph",
+  "learn one new chord",
+];
+
 export const features: Feature[] = [
-    { 
-        icon: CircleCheck, 
-        color: "#ff6000", 
-        bgColor: "bg-[#ff6000]/10", 
-        title: "Smart Task Management", 
-        description: "Organize and prioritize your tasks with ease."
-    },
-    { 
-        icon: Calendar, 
-        color: "#ff8fab", 
-        bgColor: "bg-[#ff8fab]/10", 
-        title: "Beautiful Calendar", 
-        description: "See your plans at a glance and never miss a deadline."
-    },
-    { 
-        icon: Goal, 
-        color: "#c77dff", 
-        bgColor: "bg-[#c77dff]/10", 
-        title: "Goals & Habits", 
-        description: "Turn your dreams into daily actions."
-    },
-    { 
-        icon: Trophy, 
-        color: "#F8C44F", 
-        bgColor: "bg-[#F8C44F]/10", 
-        title: "Rewards & Badges", 
-        description: "Unlock achievements and stay motivated"
-    },
-    { 
-        icon: ChartNoAxesCombined, 
-        color: "#40C7BA", 
-        bgColor: "bg-[#40C7BA]/10", 
-        title: "Progress Insights", 
-        description: "Celebrate your growth over time."
-    },
+  {
+    icon: CircleCheck,
+    color: "#ff6000",
+    bgColor: "bg-[#ff6000]/10",
+    title: "Tasks, goals and habits",
+    description:
+      "One simple place for the things you do once, the things you do daily, and the big goals behind them.",
+  },
+  {
+    icon: Target,
+    color: "#8b5cf6",
+    bgColor: "bg-[#8b5cf6]/10",
+    title: "Big goals, broken into small steps",
+    description:
+      "Turn ambitious goals into clear, manageable tasks that make your next step feel achievable.",
+  },
+  {
+    icon: CalendarDays,
+    color: "#2563eb",
+    bgColor: "bg-[#2563eb]/10",
+    title: "A daily plan that feels doable",
+    description:
+      "Bring your priorities into one daily view and focus on what matters most today, without feeling overwhelmed.",
+  },
+  {
+    icon: Repeat,
+    color: "#0d9488",
+    bgColor: "bg-[#0d9488]/10",
+    title: "Habits that fit your life",
+    description:
+      "Create flexible routines, track recurring habits, and build consistency at a pace that works for you.",
+  },
+  {
+    icon: Timer,
+    color: "#6366f1",
+    bgColor: "bg-[#6366f1]/10",
+    title: "Focused work sessions",
+    description:
+      "Set aside time for one task, reduce distractions, and turn your intentions into focused action.",
+  },
+  {
+    icon: Waves,
+    color: "#0891b2",
+    bgColor: "bg-[#0891b2]/10",
+    title: "Watch your Rivulet grow",
+    description:
+      "See your small wins add up through a visual progress system inspired by a stream growing drop by drop.",
+  },
+  {
+    icon: Trophy,
+    color: "#d97706",
+    bgColor: "bg-[#d97706]/10",
+    title: "Earn rewards for making progress",
+    description:
+      "Collect experience points and unlock new levels as you complete tasks, nurture habits, and move toward your goals.",
+  },
+  {
+    icon: Award,
+    color: "#db2777",
+    bgColor: "bg-[#db2777]/10",
+    title: "Milestones and achievements",
+    description:
+      "Celebrate meaningful milestones and earn badges that recognize your effort, consistency, and growth.",
+  },
+  {
+    icon: Sprout,
+    color: "#16a34a",
+    bgColor: "bg-[#16a34a]/10",
+    title: "Progress without perfection",
+    description:
+      "Missed a day? Start again without guilt. Rivulet encourages you to return to your routines instead of giving up.",
+  },
+  {
+    icon: Bell,
+    color: "#ea580c",
+    bgColor: "bg-[#ea580c]/10",
+    title: "Gentle, customizable reminders",
+    description:
+      "Get timely nudges for the tasks and habits that matter, with reminders designed to support you rather than overwhelm you.",
+  },
+  {
+    icon: TrendingUp,
+    color: "#7c3aed",
+    bgColor: "bg-[#7c3aed]/10",
+    title: "Progress you can understand",
+    description:
+      "Discover patterns in your activity, track goal completion, and see how your daily efforts contribute to long-term growth.",
+  },
+  {
+    icon: RotateCcw,
+    color: "#0f766e",
+    bgColor: "bg-[#0f766e]/10",
+    title: "Weekly reflection and reset",
+    description:
+      "Look back at what went well, learn from what didn't, and set realistic priorities for the week ahead.",
+  },
 ];
 
 export const steps: Step[] = [
     {
-        icon: ClipboardIllustration,
-        class: "bg-[#ff8fab]/15 rounded-[52%_37%_50%_47%/24%_74%_33%_35%]",
-        title: "Add your tasks",
-        description: "Capture everything you want to do, big or small."
+        title: "Name your big goal",
+        description: "Write down the thing you are heading toward, however big it feels today.",
+        graphic: "/images/landing/how-1-name-your-goal.svg"
     },
     {
-        icon: CalendarIllustration,
-        class: "bg-[#c77dff]/15 rounded-[45%_23%_61%_69%/73%_48%_21%_33%]",
-        title: "Plan your day",
-        description: "Organize, focus and build positive habits."
+        title: "Break it into drops",
+        description: "Turn it into tiny tasks you can finish in minutes. So small that starting feels easy.",
+        graphic: "/images/landing/how-2-break-into-drops.svg"
     },
     {
-        icon: TrophyIllustration,
-        class: "bg-[#40C7BA]/15 rounded-[36%_48%_23%_50%/68%_63%_53%_56%]",
-        title: "Feel the joy",
-        description: "Get things done and celebrate your progress!"
+        title: "Keep the stream flowing",
+        description: "Finish a drop each day, build your streak, and watch your trail grow toward the goal.",
+        graphic: "/images/landing/how-3-keep-your-flow.svg"
     }
 ];
 
@@ -104,7 +172,7 @@ export const testimonials: Testimonial[] = [
         role: "Product Designer",
         avatar: sarah.toDataUri(),
         rating: 5,
-        content: "TaskJoy completely changed the way I organize my day. I'm more focused and actually enjoy being productive!",
+        content: "Rivulet completely changed the way I organize my day. I'm more focused and actually enjoy being productive!",
     },
     {
         id: 2,
@@ -120,7 +188,7 @@ export const testimonials: Testimonial[] = [
         role: "Content Creator",
         avatar: emma.toDataUri(),
         rating: 5,
-        content: "Simple, beautiful and super motivating. TaskJoy helps me turn my goals into real progress.",
+        content: "Simple, beautiful and super motivating. Rivulet helps me turn my goals into real progress.",
     }
 
 ];
