@@ -1,6 +1,3 @@
-import Image from 'next/image';
-// import type { Metadata } from "next";
-
 import InputError from '@/components/input-error';
 import PasswordInput from '@/components/password-input';
 import TextLink from '@/components/text-link';
@@ -12,6 +9,7 @@ import { Spinner } from '@/components/ui/spinner';
 import { GoogleIcon } from '@/public/icons/google';
 import { AuthFromProps } from '@/types/auth';
 import { authService } from '@/services/authService';
+import { Field, FieldDescription, FieldGroup, FieldLabel, FieldLegend, FieldSet } from '@/components/ui/field';
 
 export function SignupForm({
   handleSubmit,
@@ -20,30 +18,19 @@ export function SignupForm({
   isSubmitting
 }: AuthFromProps) {
     return(
-    <div className="w-full max-w-md flex flex-col items-center justify-center rounded-2xl p-6 bg-white">   
-        <Image 
-          src="/logo/secondary-logo.svg"
-          alt="TaskJoy Logo"
-          width={100}
-          height={100}
-          className='py-4'
-        />
-        <h2 className="text-center text-2xl font-bold">Create your account</h2>
-        <p className="text-sm text-muted-foreground text-center">
-          Start your productivity journey today.
-        </p>
-     <form
+      <div className="w-full max-w-md p-6">
+      <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md rounded-lg p-6 space-y-4"
+        className="w-full max-w-md rounded-lg space-y-4"
        >
-        {message && 
-        <p className="text-(--success) mt-2">
-            {message}
-        </p>
-        }
-        <div className="flex flex-col gap-1">
-          <Label htmlFor="name" className="text-sm font-semibold">
-            Full name
+        <FieldSet className="mt-6">
+          <FieldLegend className='font-heading font-bold text-[36px] leading-[1.1] tracking-[-0.5px]'>Create your account</FieldLegend>
+          <FieldDescription className='text-[17px] text-slate-pum'> It takes a minute. No card needed.</FieldDescription>
+          <FieldGroup>
+          {message && <InputError message={message} className="mt-1"/>}
+          <Field>
+          <Label htmlFor="name" className="text-[14px] font-bold">
+            Name
           </Label>
           <Input
             id="name"
@@ -53,13 +40,13 @@ export function SignupForm({
             autoFocus
             tabIndex={1}
             autoComplete="name"
-            placeholder="Full name"
+            placeholder="What should we call you?"
             className="w-full rounded-xl border border-gray-300 bg-white px-3 py-4 focus:border-primary focus:ring focus:ring-primary/50"
           />
           <InputError message={errors?.name?.[0]} className="mt-1" />
-        </div>
-        <div className="flex flex-col gap-1">
-          <Label htmlFor="email" className="text-sm font-semibold">
+        </Field>
+        <Field>
+          <Label htmlFor="email" className="text-[14px] font-bold">
             Email address
           </Label>
           <Input
@@ -69,30 +56,30 @@ export function SignupForm({
             required
             tabIndex={2}
             autoComplete="email"
-            placeholder="Email address"
+            placeholder="you@email.com"
             className="w-full rounded-xl border border-gray-300 bg-white px-3 py-4 focus:border-primary focus:ring focus:ring-primary/50"
           />
           <InputError message={errors?.email?.[0]} className="mt-1" />
-        </div>
-        <div className="flex flex-col gap-1">
-          <Label htmlFor="password" className="text-sm font-semibold">
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="password" className="text-[14px] font-bold">
             Password
-          </Label>
+          </FieldLabel>
           <PasswordInput
             id="password"
             name="password"
             required
             tabIndex={3}
             autoComplete="new-password"
-            placeholder="Password"
+            placeholder="At least 8 characters"
             className="w-full rounded-xl border border-gray-300 bg-white px-3 py-4 focus:border-primary focus:ring focus:ring-primary/50"
           />
           <InputError message={errors?.password?.[0]} className="mt-1" />
-        </div>
-        <div className="flex flex-col gap-1">
-          <Label htmlFor="password_confirmation" className="text-sm font-semibold">
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="password_confirmation" className="text-[14px] font-bold">
             Confirm Password
-          </Label>
+          </FieldLabel>
           <PasswordInput
             id="password_confirmation"
             name="password_confirmation"
@@ -103,15 +90,15 @@ export function SignupForm({
             className="w-full rounded-xl border border-gray-300 bg-white px-3 py-4 focus:border-primary focus:ring focus:ring-primary/50"
           />
           <InputError message={errors?.password?.[1]} className="mt-1" />
-        </div>
+        </Field>
         <Button
           type='submit'
           disabled={isSubmitting}
           className="w-full"
-          size='lg'
+          size='md'
         >
           {isSubmitting && <Spinner />}
-          Sign Up
+          Create account
         </Button>
           <p className="text-muted-foreground text-center">or connect with</p>
           {/* <div className="w-full flex gap-2"> */}
@@ -120,7 +107,7 @@ export function SignupForm({
                     onClick={authService.loginWithGoogle}
                     className="w-full"
                     variant='secondary'
-                    size='lg'
+                    size='md'
                     >
                     <GoogleIcon size={20}/>
                     Google
@@ -133,13 +120,15 @@ export function SignupForm({
                     Apple
                 </button> */}
           {/* </div> */}
-        <div className="text-muted-foreground text-center text-sm">
+          </FieldGroup>
+          <div className="text-muted-foreground text-center text-sm">
             Already have an account?{' '}
             <TextLink href="/login" tabIndex={6} className="text-primary hover:text-primary/90 hover:underline">
                 Log in
             </TextLink>
-        </div>
+         </div>
+         </FieldSet>
       </form>
-    </div>
+   </div>
     );
 }

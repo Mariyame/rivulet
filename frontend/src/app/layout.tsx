@@ -1,33 +1,32 @@
-import { Plus_Jakarta_Sans, Caveat, Geist } from "next/font/google";
+import { Manrope , Sora } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
 import { AuthProvider } from "@/providers/AuthProvider";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
+const sora = Sora({
+  subsets:["latin"],
+  variable: "--font-sora",
   display: "swap"
 });
 
-const caveat = Caveat({
+
+const manrope = Manrope({
   subsets: ["latin"],
-  variable:"--font-caveat",
+  variable: "--font-manrope",
   display: "swap"
+
 })
 
 
-export default function DashboardLayout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className={`${jakarta.variable} ${caveat.variable} antialiased`}>
+    <html lang="en">
+      <body className={`${sora.variable} ${manrope.variable} antialiased`}>
          <AuthProvider>
-            <main className="bg-background">{children}</main>
+            <main>{children}</main>
          </AuthProvider>
       </body>
     </html>

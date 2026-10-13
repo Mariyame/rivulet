@@ -10,9 +10,9 @@ import {
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp"
+import { REGEXP_ONLY_DIGITS } from "input-otp"
 import { InfoIcon, RefreshCwIcon } from "lucide-react";
 import { Field, FieldLabel, FieldDescription } from "@/components/ui/field";
 import { VerifyCodesStepProps } from "@/types/auth"
@@ -29,9 +29,9 @@ export function TwoFactorChallenge({
     return (
         <form onSubmit={handleTwoFactorChallenge}>
             <DialogHeader>
-            <DialogTitle>Two-Factor Authentication</DialogTitle>
+            <DialogTitle>Check your code</DialogTitle>
             <DialogDescription>
-                For your security, please enter the 6-digit code from your authenticator app.
+                Enter the 6-digit code from your authenticator app to finish logging in.
             </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
@@ -49,24 +49,26 @@ export function TwoFactorChallenge({
             </div>
             <InputOTP 
                 maxLength={6} 
+                pattern={REGEXP_ONLY_DIGITS}
                 id="otp-verification" 
                 value={code}
                 onChange={setCode}
-                required>
+                required
+                >
                 <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
-                <InputOTPSlot index={0} />
-                <InputOTPSlot index={1} />
-                <InputOTPSlot index={2} />
-                </InputOTPGroup>
-                <InputOTPSeparator className="mx-2" />
-                <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
-                <InputOTPSlot index={3} />
-                <InputOTPSlot index={4} />
-                <InputOTPSlot index={5} />
+                    <InputOTPSlot index={0} />
+                    <InputOTPSlot index={1} />
+                    <InputOTPSlot index={2} />
+                    <InputOTPSlot index={3} />
+                    <InputOTPSlot index={4} />
+                    <InputOTPSlot index={5} />
                 </InputOTPGroup>
             </InputOTP>
             <FieldDescription>
-                <p><InfoIcon /> Don&apos;t have access to your authenticator app?</p>
+                <p className="flex items-center gap-2">
+                    <InfoIcon className="text-primary size-4"/> 
+                    Don&apos;t have access to your authenticator app?
+                </p>
                 <a href="#">Use a recovery code</a>
             </FieldDescription>
             </Field>

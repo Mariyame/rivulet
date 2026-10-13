@@ -15,10 +15,9 @@ export type Feature = {
 };
 
 export type Step = {
-    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-    class: string;
     title: string;
     description: string;
+    graphic: string
 }
 
 export type Testimonial = {

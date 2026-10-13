@@ -69,6 +69,14 @@ export const authService = {
         return api.post(`${AUTH_BASE_URL}/two-factor-challenge`, {code});
     },
 
+    async twoFactorRecoveryChallenge(recoveryCode: string) {
+         return api.post(`${AUTH_BASE_URL}/two-factor-challenge`, {recovery_code: recoveryCode});
+   },
+
+    async disableTwoFactorAuth() {
+        return api.delete(`${AUTH_BASE_URL}/user/two-factor-authentication`)
+    }
+
 
 
 

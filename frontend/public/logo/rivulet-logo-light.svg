@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100" role="img" aria-label="Rivulet">
+<title>Rivulet</title>
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC93C"/><stop offset="0.35" stop-color="#FF8A3D"/><stop offset="0.7" stop-color="#F9605A"/><stop offset="1" stop-color="#E8407E"/></linearGradient></defs>
+<g transform="translate(0 0) scale(0.8)"><path d="M60 8 C60 8 20 50 20 76 A40 40 0 0 0 100 76 C100 50 60 8 60 8 Z" fill="url(#g)"/></g>
+<text x="92" y="74" font-family="Fredoka, 'Nunito', 'Arial Rounded MT Bold', system-ui, sans-serif" font-weight="600" font-size="68" letter-spacing="-1" fill="#241A3A">Rivulet</text>
+</svg>
