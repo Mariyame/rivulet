@@ -5,9 +5,13 @@ import { clsx } from "clsx";
 import { Menu, X} from "lucide-react";
 import { navigation } from "../../../data/content";
 import {useState, useEffect } from "react";
+import { useAuth } from "@/hooks/useAuth";
+import { NavUser } from "./NavUser";
+import { Separator } from "@/components/ui/separator";
 
 export function Navbar() {
     const [open, setOpen ] = useState(false);
+    const { isAuthenticated } = useAuth();
     useEffect(() => {
         if(!open)
             return;
@@ -24,13 +28,19 @@ export function Navbar() {
     return(
         <div className="container-page relative z-50 flex items-center justify-between gap-4 py-6">
             <div className="shrink-0">
-                <Image 
-                  src="./logo/rivulet-logo-dark.svg"
-                  alt="Rivulet logo"
-                  width={120}
-                  height={50}
-                  priority
+            <Link
+                href="/"
+                aria-label="Rivulet — Home"
+                className="inline-flex items-center"
+                >
+                <Image
+                    src="/images/logo/rivulet-logo-dark.svg"
+                    alt=""
+                    width={140}
+                    height={40}
+                    priority
                 />
+            </Link>
             </div>
             <div className="hidden lg:flex">
                 <nav>
@@ -50,10 +60,15 @@ export function Navbar() {
                     </ul>
                 </nav>
             </div>
-            <div className="hidden lg:flex gap-4 items-center">
-                <Link className="text-white font-bold text-[15px] px-4.5 py-3 transition duration-200 hover:-translate-y-0.75 hover-scale-[1.03] hover:brightness-[1.06]" href="/login">Log in</Link>
-                <Link href="/signup" className="px-5.5 py-3 rounded-3xl bg-sunbeam text-foreground font-bold text-[15px] transition duration-200 hover:-translate-y-0.75 hover-scale-[1.03] hover:brightness-[1.06]">Create account</Link>
-            </div>
+
+                {isAuthenticated ? 
+               <NavUser />
+                :
+                <div className="hidden lg:flex gap-4 items-center">
+                    <Link className="text-white font-bold text-[15px] px-4.5 py-3 transition duration-200 hover:-translate-y-0.75 hover-scale-[1.03] hover:brightness-[1.06]" href="/login">Log in</Link>
+                    <Link href="/signup" className="px-5.5 py-3 rounded-3xl bg-sunbeam text-foreground font-bold text-[15px] transition duration-200 hover:-translate-y-0.75 hover-scale-[1.03] hover:brightness-[1.06]">Create account</Link>
+                </div>
+               }  
             <button
                   type="button"
                   aria-controls="mobile-menu"
@@ -63,9 +78,8 @@ export function Navbar() {
                   className="flex w-11 h-11 bg-white/10 rounded-full items-center justify-center shrink-0 lg:hidden"
                   >
                 {open ? <X strokeWidth={2.5} className="text-white size-5"/> : <Menu strokeWidth={2.5} className="text-white size-5"/>}
-              </button>
-                <div
-                    onClick={() => setOpen(false)}
+            </button>
+             <div onClick={() => setOpen(false)}
                     className={`fixed inset-0 -z-10 bg-black/40 transition-opacity duration-300 min-[860px]:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
                 />
               {open && (
@@ -84,13 +98,23 @@ export function Navbar() {
                                 <li key={item.href}>
                                     <Link 
                                     href={item.href}
-                                    className={clsx( item.current && "", "flex h-13 items-center rounded-2xl px-4.5 text-[17px] font-bold text-white hover:bg-white/10")}
+                                    className="flex h-13 items-center rounded-2xl px-4.5 text-[17px] font-bold text-white hover:bg-white/10"
                                     onClick={() => setOpen(false)}
                                     >
                                     {item.name}
                                     </Link>
                                 </li>
                             ))}
+                        <li>
+                        <Separator className="bg-white/10"/>
+                        <Link 
+                        href="login"
+                        className="flex h-13 items-center rounded-2xl px-4.5 text-[17px] font-bold text-sunbeam hover:bg-white/10"
+                        onClick={() => setOpen(false)}
+                        >
+                        Log in
+                        </Link>
+                        </li>
                         </ul>
                     </nav>
               </aside>
