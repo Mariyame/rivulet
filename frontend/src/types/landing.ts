@@ -20,6 +20,12 @@ export type Step = {
     graphic: string
 }
 
+export type NavUser = {
+  title: string;
+  href: string;
+  icon: LucideIcon
+}
+
 export type Testimonial = {
   id: number;
   fullname: string;
