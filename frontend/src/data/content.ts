@@ -2,8 +2,7 @@ import {
   Nav,
   Feature,
   Step,
-  Testimonial,
-  NavUser
+  Testimonial
  } from "@/types/landing";
 
 import { 
@@ -19,8 +18,6 @@ import {
     Bell,
     TrendingUp,
     RotateCcw,
-    UserRound,
-    Shield,
 } from 'lucide-react';
 
 import { Style, Avatar } from '@dicebear/core';
@@ -167,24 +164,6 @@ const alex = new Avatar(style, {
 const emma = new Avatar(style, {
   "seed": "Emma"
 });
-
-export const navUser: NavUser[] = [
-  {
-    title: "Profile",
-    href: "/profile",
-    icon: UserRound
-  },
-  {
-    title: "Notifications",
-    href: "/notifications",
-    icon: Bell
-  },
-  {
-    title: "Security",
-    href: "/security",
-    icon: Shield
-  }
-]
 
 export const testimonials: Testimonial[] = [
     {
