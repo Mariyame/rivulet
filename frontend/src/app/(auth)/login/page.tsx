@@ -14,7 +14,7 @@ export default function Login() {
       const [message, setMessage ]= useState('');
       const [isSubmitting, setIsSubmitting] = useState(false);
       const router = useRouter();
-       const { isAuthenticated } = useAuth()
+       const { refreshUser } = useAuth()
   
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -38,9 +38,11 @@ export default function Login() {
                 password
             });
 
-            if(response.data.two_factor || !isAuthenticated) {
+
+            if(response.data.two_factor) {
                router.replace('/two-factor-challenge')
             } else {
+                await refreshUser();
                 router.replace('/dashboard')
             }
        
