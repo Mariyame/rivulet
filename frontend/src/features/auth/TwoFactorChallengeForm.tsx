@@ -21,8 +21,8 @@ export function TwoFactorChallengeForm({
      <div className="w-full max-w-md p-6"> 
         <form onSubmit={handleTwoFactorChallenge}>
             <FieldSet>
-            <FieldLegend className='font-heading font-bold text-[36px] leading-[1.1] tracking-[-0.5px]'>Create your account</FieldLegend>
-            <FieldDescription className='text-[17px] text-slate-pum'> It takes a minute. No card needed.</FieldDescription>
+            <FieldLegend className='font-heading font-bold text-[36px] leading-[1.1] tracking-[-0.5px]'>Check your code</FieldLegend>
+            <FieldDescription className='text-[17px] text-slate-pum'>Enter the 6-digit code from your authenticator app to finish logging in.</FieldDescription>
             <FieldGroup>
              {message && <InputError message={message} className="mt-1" />}
             <Field>

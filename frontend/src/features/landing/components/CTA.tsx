@@ -30,7 +30,7 @@ export function CTA() {
                             Login
                         </Link>
                 </div>
-                <div className="flex gap-2 pt-7.5">
+                <div className="flex sm:flex-row flex-col gap-2 pt-7.5">
                          <Link href="/login" className="flex flex-col py-6.5 items-center justify-center rounded-[18px] border-2 border-white/35 text-white px-7 h-15 font-bold text-17 transition duration-200 hover:-translate-y-0.75 hover-scale-[1.03] hover:brightness-[1.06] ">
                             <span className="font-semibold text-[11px] uppercase tracking-[1px]">Download on the</span>
                             <span className="font-bold text-[17px]">App Store</span>
