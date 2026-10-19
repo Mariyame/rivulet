@@ -5,8 +5,8 @@ import { PublicPageLayout } from "@/features/public/public-page-layout";
 export default function SupportPage() {
     return (
         <PublicPageLayout
-            title="Privacy Policy"
-            description="How Rivulet collects, uses and protects your information, in plain language."
+            title="How can we help?"
+            description="Find answers and get back to your flow."
              >
             <div className="container-page">
                {privacy.sections.map((s, i) => (

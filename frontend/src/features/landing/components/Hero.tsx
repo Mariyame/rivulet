@@ -6,11 +6,11 @@ import { ArrowUp, Star, CircleDashed } from "lucide-react";
 
 export function Hero() {
         return (
-            <section id="hero">
+            <section id="hero" className="">
                 <div className="grid md:grid-cols-[2fr_1fr] grid-cols-1 items-center container-page mx-auto">
-                    <div className="text-left sm:py-16 py-6 space-y-4">
+                    <div className="stext-left py-16 space-y-4">
                         <div className="mx-4 space-y-6">
-                            <p className="inline-flex gap-2.5 sm:justify-center sm:items-center px-3 py-2 rounded-2xl bg-white/10 font-bold text-sm text-[#E4DEEE] font-heading">
+                            <p className="inline-flex gap-2.5 sm:justify-center sm:items-center px-4 py-2 rounded-2xl bg-white/10 font-bold text-[14px] text-[#E4DEEE] font-heading">
                                 Tasks, goals and habits, played like a game
                             </p>
                             <h1 className="text-6xl text-white font-bold font-heading mt-5.5 text-[clamp(46px,6.6vw,92px)] leading-[1.02] tracking-[-2.5px]">
@@ -26,7 +26,7 @@ export function Hero() {
                             </p>
                         </div>
 
-                        <div className="flex sm:flex-row flex-col gap-4 pt-4">
+                        <div className="flex sm:flex-row flex-col gap-2 sm:gap-4 pt-4">
                                 <Link href="/signup" className="flex items-center justify-center gap-10 bg-button-gradient px-8.5 h-14 rounded-full text-foreground font-bold text-18 transition duration-200 hover:-translate-y-0.75 hover-scale-[1.03] hover:brightness-[1.06]">
                                     Create your free account
                                 </Link>
@@ -39,12 +39,12 @@ export function Hero() {
                             Free to join. On iPhone and Android.
                         </p>
                     </div>
-                     <div className="relative isolate mx-auto flex min-h-100 w-full max-w-120 items-center justify-center px-4 sm:min-h-[470px] sm:px-6 lg:min-h-[500px]">
+                     <div className="relative isolate mx-auto flex min-h-[400px] w-full max-w-[480px] items-center justify-center px-4 sm:min-h-[470px] sm:px-6 lg:min-h-[500px]">
                         <Bob
                             title="Level 3 · Brook"
                             subtitle="Water is rising"
                             icon={ArrowUp}
-                            position="z-20 top-25 left-0 sm:top-32 sm:-left-2"
+                            position="z-20 top-10 left-0 sm:top-16 sm:-left-2"
                             background="bg-sunbeam"
                         />
 
@@ -60,7 +60,7 @@ export function Hero() {
                             title="Rain check earned"
                             subtitle="Streak protected"
                             icon={Star}
-                            position="z-20 bottom-12 left-0 sm:bottom-8 sm:-left-3"
+                            position="z-20 bottom-4 left-0 sm:bottom-8 sm:-left-3"
                             background="bg-berry"
                         />
 
@@ -71,9 +71,9 @@ export function Hero() {
                             width={350}
                             height={450}
                             priority
-                            className="relative z-10 -mt-4 h-auto w-[72%] max-w-72 sm:mt-0 sm:w-[82%] sm:max-w-87.5 flex-1"
+                            className="relative z-10 -mt-4 h-auto w-[72%] max-w-[290px] sm:mt-0 sm:w-[82%] sm:max-w-[350px]"
                         />
-                    </div>
+                        </div>
                 </div>
                 <Image 
                 src="/images/landing/rivulet-hero-waves.svg"
