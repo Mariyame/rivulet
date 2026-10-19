@@ -6,8 +6,8 @@ import { PublicPageLayout } from "@/features/public/public-page-layout";
 export default function SupportPage() {
     return (
         <PublicPageLayout
-            title="Terms of Service"
-            description="The simple rules for using Rivulet. Please read them before you create an account."
+            title="How can we help?"
+            description="Find answers and get back to your flow."
              >
            <div className="container-page">
                {terms.sections.map((s, i) => (
