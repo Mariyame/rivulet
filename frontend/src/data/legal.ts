@@ -1,4 +1,5 @@
 const EMAIL = "mariam.chemrah@gmail.com"
+
 export const legalPages = {
     terms: {
         title: "Terms of Service",
@@ -310,7 +311,7 @@ export const privacy: LegalPage = {
       "number": "10",
       "title": "Contact",
       "paragraphs": [
-        "Questions about privacy? Write to [contact email] or use the form on the Support page."
+        `Questions about privacy? Write to ${EMAIL} or use the form on the Support page.`
       ]
     }
   ]
