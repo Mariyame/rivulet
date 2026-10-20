@@ -26,7 +26,7 @@ export function Hero() {
                             </p>
                         </div>
 
-                        <div className="flex sm:flex-row flex-col gap-4 pt-4">
+                        <div className="flex sm:flex-row flex-col sm:gap-4 gap-2 pt-4">
                                 <Link href="/signup" className="flex items-center justify-center gap-10 bg-button-gradient px-8.5 h-14 rounded-full text-foreground font-bold text-18 transition duration-200 hover:-translate-y-0.75 hover-scale-[1.03] hover:brightness-[1.06]">
                                     Create your free account
                                 </Link>
