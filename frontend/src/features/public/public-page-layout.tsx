@@ -17,7 +17,7 @@ export function PublicPageLayout({
 }: PublicPageLayoutProps ) {
     return (
             <main className="flex min-h-screen flex-col bg-background">
-                <div className="relative bg-[radial-gradient(circle_at_70%_20%,#3A2A66_0%,#241A3A_55%,#1B1330_100%)] text-white px-[clamp(20px,5vw,72px)] pb-25">
+                <div className="relative bg-[radial-gradient(circle_at_70%_20%,#3A2A66_0%,#241A3A_55%,#1B1330_100%)] text-white pb-25">
                     <header className="container-page flex justify-between py-6">
                         <Link
                             href="/"
@@ -34,7 +34,7 @@ export function PublicPageLayout({
                             </Link>
                             <Link 
                             href="/"
-                            className="py-3.5 px-5.5 rounded-4xl text-foreground font-bold text-[15px] bg-sunbeam"
+                            className="sm:py-3.5 py-2.5 sm:px-5.5 px-4.5 rounded-4xl text-foreground font-bold sm:text-[15px] text-[12px] bg-sunbeam"
                             >
                                 Back to the app
                             </Link>
