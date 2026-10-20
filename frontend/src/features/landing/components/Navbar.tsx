@@ -36,7 +36,7 @@ export function Navbar() {
                 <Image
                     src="/images/logo/rivulet-logo-dark.svg"
                     alt="Rivulet Logo"
-                    width={200}
+                    width={160}
                     height={100}
                     priority
                 />

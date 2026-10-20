@@ -84,7 +84,7 @@ export function Contact () {
                         <form onSubmit={handleSubmit}>
                         <FieldGroup>
                             <FieldSet>
-                                <div className="grid grid-cols-2 gap-2">
+                                <div className="grid sm:grid-cols-2 grid-cols-1 gap-2">
                                  <Field>
                                     <FieldLabel htmlFor="name">
                                     Your name
