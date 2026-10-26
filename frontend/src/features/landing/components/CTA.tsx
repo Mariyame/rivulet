@@ -1,8 +1,20 @@
+'use client'
+
 import  Link  from "next/link";
-import Image from "next/image"
+import Image from "next/image";
+import { useState } from "react";
+import { InfoIcon } from "lucide-react"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
+import { Button } from "@/components/ui/button";
+import Mascot from "@/features/shared/Mascot";
 
 
 export function CTA() {
+    const [showMessage, setShowMessage] = useState(false)
     return(
         <section id="how" className="bg-light-gradient">
             <div className="flex flex-col justify-center items-center sm:py-28 py-12 px-[clamp(20px,5vw,72px)]">
@@ -31,17 +43,43 @@ export function CTA() {
                         </Link>
                 </div>
                 <div className="flex sm:flex-row flex-col gap-2 pt-7.5">
-                         <Link href="/login" className="flex flex-col py-6.5 items-center justify-center rounded-[18px] border-2 border-white/35 text-white px-7 h-15 font-bold text-17 transition duration-200 hover:-translate-y-0.75 hover-scale-[1.03] hover:brightness-[1.06] ">
-                            <span className="font-semibold text-[11px] uppercase tracking-[1px]">Download on the</span>
-                            <span className="font-bold text-[17px]">App Store</span>
-                        </Link>
-                        
-                        <Link href="/login" className="flex flex-col py-6.5 items-center justify-center rounded-[18px] border-2 border-white/35 text-white px-7 h-15 font-bold text-17 transition duration-200 hover:-translate-y-0.75 hover-scale-[1.03] hover:brightness-[1.06] ">
-                            <span className="font-semibold text-[11px] uppercase tracking-[1px]">Get it on</span>
-                            <span className="font-bold text-[17px]">Google Play</span>
-                        </Link>
-                </div>
+                    <button
+                    type="button"
+                    onClick={() => setShowMessage(true)}
+                    aria-label="App Store — coming soon"
+                    className="cursor-pointer transition-opacity hover:opacity-80"
+                    >
+                    <Image
+                        src="/images/app-store.svg"
+                        alt="Download on the App Store"
+                        width={160}
+                        height={48}
+                    />
+                    </button>
 
+                    <button
+                    type="button"
+                    onClick={() => setShowMessage(true)}
+                    aria-label="Google Play — coming soon"
+                    className="cursor-pointer transition-opacity hover:opacity-80"
+                    >
+                    <Image
+                        src="/images/google-play.svg"
+                        alt="Get it on Google Play"
+                        width={160}
+                        height={48}
+                    />
+                    </button>
+                </div>
+                {showMessage && 
+                <Alert className="max-w-lg mt-4">
+                    <Mascot />
+
+                    <AlertDescription>
+                    We&apos;re working on it! Rivulet is coming soon to the App Store and Google Play.
+                    </AlertDescription>
+                </Alert>
+                }
             </div>
             <Image 
                 src="/images/rivulet-wave-footer-coral.svg"
