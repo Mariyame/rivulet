@@ -11,18 +11,18 @@ export function Hero() {
                     <div className="text-left sm:py-16 py-6 space-y-4">
                         <div className="mx-4 space-y-6">
                             <p className="inline-flex gap-2.5 sm:justify-center sm:items-center px-3 py-2 rounded-2xl bg-white/10 font-bold text-sm text-[#E4DEEE] font-heading">
-                                Tasks, goals and habits, played like a game
+                                Turn Your Goals Into Progress
                             </p>
-                            <h1 className="text-6xl text-white font-bold font-heading mt-5.5 text-[clamp(46px,6.6vw,92px)] leading-[1.02] tracking-[-2.5px]">
-                                Small drops. 
+                            <h1 className="text-6xl text-white font-bold font-heading mt-5.5 text-[clamp(36px,5.6vw,82px)] leading-[1.02] tracking-[-2.5px]">
+                                Make progress, 
         
                              <span className="flex text-gradient">
-                                Big rivers.
+                                one step at a time.
                             </span>
                             </h1>
                             <ChangedText />
                             <p className="text-white max-w-100">
-                                Finish a drop, keep your streak, earn rewards. Rivulet turns your big goals into tiny daily wins you will actually want to play.
+                                Just as a small stream continues to flow toward its destination, Rivulet helps you keep moving forward, one step at a time.
                             </p>
                         </div>
 
