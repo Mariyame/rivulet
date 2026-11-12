@@ -34,3 +34,35 @@ export type Testimonial = {
   rating: number;
   content: string;
 };
+
+export type Block =
+  | { type: "paragraph"; text: string }
+  | { type: "heading"; text: string }
+  | { type: "quote"; text: string; highlight?: boolean }
+  | { type: "pullQuote"; text: string }
+  | { type: "orderedList"; items: { title: string; text: string }[] }
+  | { type: "callout"; text: string };
+
+export interface Article {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  /** ISO date (YYYY-MM-DD) */
+  publishedAt: string;
+  readingTimeMinutes: number;
+  source?: { label: string; url: string; platform: string };
+  blocks: Block[];
+}
+
+export type CallToActionProps = {
+    title: string;
+    description: string;
+    buttonLabel: string;
+    buttonHref: string;
+};
+
+export type ArticleCardProps = {
+    article: Article;
+    featured?: boolean;
+};
