@@ -3,7 +3,7 @@ import Image from "next/image";
 import { PublicPageHeader } from "@/features/public/public-page-header";
 
 type PublicPageLayoutProps = {
-    category: string;
+    category?: string;
     title: string;
     description: string;
     children: React.ReactNode;
@@ -42,7 +42,7 @@ export function PublicPageLayout({
                             </Link>
                     </header>
                     <PublicPageHeader
-                        category={category}
+                        category={category ?? ""}
                         title={title}
                         description={description}>
                         {headerContent}
