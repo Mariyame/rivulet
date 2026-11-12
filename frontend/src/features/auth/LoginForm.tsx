@@ -74,7 +74,7 @@ export function LoginForm({
                 size="md"
                 className="w-full"
                 >
-                {isSubmitting ? "Login..." : "Login"}
+                {isSubmitting ? "Log in..." : "Log in"}
                 </Button>
             
                 <p className="text-muted-foreground text-center">or connect with</p>
