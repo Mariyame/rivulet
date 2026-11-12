@@ -55,4 +55,7 @@ export const mapUser = (data: {
       avatarFallback: () =>
         data.name.split(" ").map((char) => char[0]).join("").toUpperCase()
     }
-}
+};
+
+
+

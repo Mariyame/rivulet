@@ -3,7 +3,7 @@ import  Image  from "next/image";
 import Link from "next/link";
 import { clsx } from "clsx";
 import { Menu, X} from "lucide-react";
-import { navigation } from "../../../data/content";
+import { navigation } from "@/data/content";
 import {useState, useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { NavUser } from "./NavUser";

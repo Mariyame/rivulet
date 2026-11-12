@@ -29,6 +29,7 @@ import definition from '@dicebear/styles/moods.json' with { type: 'json' };
 export  const navigation: Nav[] = [
     { name: 'How it works', href: '#how', current: false },
     { name: 'Features', href: '#features', current: true },
+    { name: 'Blog', href: '/blog', current: true },
     { name: 'FAQ', href: '/support', current: false },
 ];
 
